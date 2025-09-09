@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{film.title}}{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h2>{{film.title}}</h2>
+
+<h4>{{film.description}}</h4>
+
+{% endblock %}
