@@ -1,11 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Hall(models.Model):
+    name = models.CharField(max_length=50, unique=True, verbose_name="Salle")
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+      ordering = ('name', )
+      verbose_name = "salle"
+      verbose_name_plural = "salles"
+
 class Genre(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name="Genre")
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+      ordering = ('name', )
+      verbose_name = "genre"
+      verbose_name_plural = "genres"
 
 class Film(models.Model):
   title = models.CharField(max_length=100, verbose_name="Titre")
@@ -40,7 +56,7 @@ class Seance(models.Model):
    film = models.ForeignKey(Film, verbose_name="Films", related_name='seances', on_delete=models.CASCADE )
    date = models.DateField(verbose_name="Date")
    time = models.TimeField(verbose_name="Heure")
-   hall = models.CharField(max_length=50, verbose_name="Salle")
+   hall = models.ForeignKey(Hall, verbose_name="Salle", related_name='seances', on_delete=models.CASCADE)
 
    def __str__(self):
     return f"{self.film.title} - {self.date} à {self.time}"
