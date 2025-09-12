@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,47 +7,77 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <title>Cinema</title>
+  <title>{% block title %}Cinéma{% endblock %}</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <link rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
   <!--
       Navbar & Banner
     -->
-  <nav>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <a href="{% url 'index' %}">ACCUEIL</a>
-          <a href="{% url 'film-list' %}">CINEMAS</a>
-        </div>
+      <a class="navbar-brand" href="{% url 'index' %}">🎬 Cinéma</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link">Films</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Séances</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Réservations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">À propos</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">Bonjour, {{ user.username }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Déconnexion</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link">Connexion</a>
+          </li>
+          {% endif %}
+        </ul>
       </div>
     </div>
   </nav>
 
+
   <main>
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, explicabo enim amet culpa nihil inventore obcaecati error eaque, praesentium a tempora distinctio quidem accusamus laudantium excepturi quod iusto quos maiores?</p>
-        </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
+      {% endfor %}
+      {% endif %}
+
+      {% block content %}{% endblock %}
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <p>Copyright &copy; Diana Potupis 2025</p>
-        </div>
-      </div>
-    </div>
+  <footer class="bg-dark text-light text-center py-3 mt-4">
+    <p class="mb-0">Copyright &copy; Cinéma — Projet Django Diana Potupis 2025</p>
   </footer>
 
   <!-- Placed at the end of the document so the pages load faster -->
