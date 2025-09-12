@@ -10,4 +10,25 @@
     <a  class="btn btn-primary btn-lg mt-3">Voir les films</a>
 </div>
 
+<div class="container">
+  {% for film in films %}
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-sm">
+      {% if film.poster %}
+      <img src="{{film.poster.url }}" class="card-img-top" alt="{{ film.title }}">
+      {% else %}
+      <img src="{% static 'img/default.png' %}" class="card-img-top" alt="No image">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ film.title }}</h5>
+        <p class="card-text">{{ film.description|truncatechars:100 }}</p>
+        <a href="{% url 'film_detail' film.pk %}" class="btn btn-sm btn-outline-primary">Voir le détail</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <p>Aucun film trouvé.</p>
+  {% endfor %}
+</div>
+
 {% endblock %}

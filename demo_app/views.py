@@ -7,7 +7,11 @@ from .models import Film
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        films = Film.objects.all()
+        context = {
+            'films': films,
+        }
+        return render(request, 'index.html', context)
 
 
 class FilmsListView(View):
@@ -15,7 +19,6 @@ class FilmsListView(View):
         films = Film.objects.all()
 
         context = {
-            'firstname': "Pierre-Marc",
             'films': films,
         }
 
