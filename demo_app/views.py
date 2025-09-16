@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.base import View
 
-from .models import Film
+from .models import Film, Seance
 
 
 class IndexView(View):
@@ -38,3 +38,13 @@ class FilmView(View):
         }
 
         return render(request, 'film-details.html', context)
+    
+class SeanceView(View):
+    def get(self, request):
+        seances = Seance.objects.all()
+
+        context = {
+            'seances': seances,
+        }
+
+        return render(request, 'seances.html', context)
