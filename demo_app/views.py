@@ -48,3 +48,6 @@ class SeanceView(View):
         }
 
         return render(request, 'seances.html', context)
+    
+def AboutView(request):
+        return render(request, 'about.html')

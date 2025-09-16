@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}À propos{% endblock %}
+
+{% block content %}
+<div class="text-white py-5">
+  <div class="container">
+    <h1 class="mb-4 text-center">À propos de notre Cinéma</h1>
+    
+    <p class="lead text-center">Bienvenue sur notre site de réservation de films ! 🎬</p>
+
+    <h3 class="mt-5">Notre mission</h3>
+    <p>Offrir une expérience cinématographique agréable et simple, avec la possibilité de réserver vos places en ligne.</p>
+
+    <h3 class="mt-4">Tarifs des billets</h3>
+    <div class="row g-4 mt-3">
+      <div class="col-md-4">
+        <div class="card bg-dark bg-opacity-75 text-white shadow">
+          <div class="card-body text-center">
+            <h5 class="card-title">Adulte</h5>
+            <p class="card-text display-6">12 €</p>
+            <p class="card-text">Accès à toutes les séances à partir de 18 ans.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark bg-opacity-75 text-white shadow">
+          <div class="card-body text-center">
+            <h5 class="card-title">Enfant</h5>
+            <p class="card-text display-6">7 €</p>
+            <p class="card-text">Pour les moins de 12 ans.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark bg-opacity-75 text-white shadow">
+          <div class="card-body text-center">
+            <h5 class="card-title">Étudiant</h5>
+            <p class="card-text display-6">9 €</p>
+            <p class="card-text">Tarif spécial sur présentation d’une carte étudiante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mt-5">Contact</h3>
+    <p>Email: info@cinema.fr</p>
+    <p>Téléphone: +33 1 23 45 67 89</p>
+  </div>
+</div>
+{% endblock %}
