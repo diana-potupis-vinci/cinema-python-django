@@ -37,4 +37,4 @@ class FilmView(View):
             'film': film
         }
 
-        return render(request, 'film.html', context)
+        return render(request, 'film-details.html', context)
