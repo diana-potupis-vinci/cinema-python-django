@@ -1,0 +1,5 @@
+.bg-cover {
+    background: url("../img/cover.jpg") no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+  }
