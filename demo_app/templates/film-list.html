@@ -2,15 +2,31 @@
 {% block title %}Liste des films{% endblock %}
 
 {% block content %}
+{% load static %}
 
 <p>Bonjour {{ firstname }}!</p>
 
-<h2>Liste des films</h2>
+<h2 class="text-white mb-5" >Liste des films</h2>
 
-<ul>
+<div class="row">
   {% for film in films %}
-  <li>{{ film.title }}</li>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-sm">
+      {% if film.poster %}
+      <img src="{{film.poster.url}}" class="card-img-top" alt="{{ film.title }}">
+      {% else %}
+      <img src="{% static 'img/default.png' %}" class="card-img-top" alt="No image">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ film.title }}</h5>
+        <p class="card-text">{{ film.description|truncatechars:100 }}</p>
+        <a href="{% url 'film_detail' film.pk %}" class="btn btn-sm btn-outline-primary">Voir le détail</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <p>Aucun film trouvé.</p>
   {% endfor %}
-</ul>
+</div>
 
 {% endblock %}
