@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Séances{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-white text-center m-3 p-3 bg-dark bg-opacity-75 rounded-3 shadow">Liste des séances</h2>
+
+  {% if seances %}
+    <table class="table table-bordered table-hover bg-white shadow">
+      <thead class="table-light">
+        <tr>
+          <th>Film</th>
+          <th>Date</th>
+          <th>Heure</th>
+          <th>Salle</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for seance in seances %}
+        <tr>
+          <td>{{ seance.film }}</td>
+          <td>{{ seance.date }}</td>
+          <td>{{ seance.time }}</td>
+          <td>{{ seance.hall }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="alert alert-warning">Aucune séance trouvée.</p>
+  {% endif %}
+</div>
+
+{% endblock %}
