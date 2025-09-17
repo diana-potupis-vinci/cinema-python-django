@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.base import View
+from django.core.paginator import Paginator
 
 from .models import Film, Seance
 
@@ -8,21 +9,25 @@ from .models import Film, Seance
 class IndexView(View):
     def get(self, request):
         films = Film.objects.all()
-        context = {
-            'films': films,
-        }
-        return render(request, 'index.html', context)
+
+        paginator = Paginator(films, 6)
+
+        page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+    
+        return render(request, 'index.html',  {"page_obj": page_obj})
 
 
 class FilmsListView(View):
     def get(self, request):
         films = Film.objects.all()
 
-        context = {
-            'films': films,
-        }
+        paginator = Paginator(films, 9)
 
-        return render(request, 'film-list.html', context)
+        page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        return render(request, 'film-list.html', {"page_obj": page_obj})
 
 
 class FilmView(View):
