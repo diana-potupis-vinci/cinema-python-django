@@ -6,12 +6,19 @@
 <div class="film-container py-5">
   <div class="container bg-white shadow rounded">
     <div class="row align-items-stretch">
-      
       <div class="col-md-4 p-0">
         {% if film.poster %}
-          <img src="{{ film.poster.url }}" class="img-fluid w-100 h-100 object-fit-cover rounded-start" alt="{{ film.title }}">
+        <img
+          src="{{ film.poster.url }}"
+          class="img-fluid w-100 h-100 object-fit-cover rounded-start"
+          alt="{{ film.title }}"
+        />
         {% else %}
-          <img src="{% static 'img/default.png' %}" class="img-fluid w-100 h-100 object-fit-cover rounded-start" alt="No image">
+        <img
+          src="{% static 'img/default.png' %}"
+          class="img-fluid w-100 h-100 object-fit-cover rounded-start"
+          alt="No image"
+        />
         {% endif %}
       </div>
 
@@ -19,32 +26,61 @@
         <div class="p-5">
           <h1 class="mb-4">{{ film.title }}</h1>
 
-          <p class="mb-2"><strong>Genre:</strong> <span class="text-muted">{{ film.genre }}</span></p>
-          <p class="mb-2"><strong>Duration:</strong> <span class="text-muted">{{ film.duration }}</span></p>
-          <p class="mb-4"><strong>Description:</strong><br> <span class="text-muted">{{ film.description }}</span></p>
+          <p class="mb-2">
+            <strong>Genre:</strong>
+            <span class="text-muted">{{ film.genre }}</span>
+          </p>
+          <p class="mb-2">
+            <strong>Duration:</strong>
+            <span class="text-muted">{{ film.duration }}</span>
+          </p>
+          <p class="mb-4">
+            <strong>Description:</strong><br />
+            <span class="text-muted">{{ film.description }}</span>
+          </p>
 
+          <h5 class="mb-3">Séances disponibles:</h5>
+
+          {% if seances %}
+            <ul class="list-unstyled">
+              {% for seance in seances %}
+                <li class="mb-2">
+                  <strong>{{ seance.date|date:"d/m/Y" }}</strong>
+                  à <strong>{{ seance.time|time:"H:i" }}</strong>
+                  ({{ seance.hall.name }})
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted">Aucune séance prévue.</p>
+          {% endif %}
           <h5 class="mb-3">Actors:</h5>
           <div class="row g-3">
             {% for actor in film.actors.all %}
-              <div class="col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                  <div class="card-body">
-                    <h6 class="card-title mb-1">{{ actor.first_name }} {{ actor.last_name }}</h6>
-                    <p class="card-text small text-muted">{{ actor.biography }}</p>
-                  </div>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-title mb-1">
+                    {{ actor.first_name }} {{ actor.last_name }}
+                  </h6>
+                  <p class="card-text small text-muted">
+                    {{ actor.biography }}
+                  </p>
                 </div>
               </div>
+            </div>
             {% empty %}
-              <p>No actors listed.</p>
+            <p>No actors listed.</p>
             {% endfor %}
           </div>
 
           <div class="mt-4">
-            <a href="{% url 'film-list' %}" class="btn btn-primary">Retour à la liste des films</a>
+            <a href="{% url 'film-list' %}" class="btn btn-primary"
+              >Retour à la liste des films</a
+            >
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

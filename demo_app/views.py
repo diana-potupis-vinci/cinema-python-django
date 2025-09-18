@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.core.paginator import Paginator
+from django.utils import timezone
 
 from .models import Film, Seance
 
@@ -37,9 +38,13 @@ class FilmView(View):
         except Film.DoesNotExist:
             raise Http404("Film does not exist")
         
+        today = timezone.localdate()
+
+        seances = Seance.objects.filter(film=film, date__gte=today).order_by('date', 'time')
 
         context = {
-            'film': film
+            'film': film,
+            'seances': seances,
         }
 
         return render(request, 'film-details.html', context)
