@@ -37,7 +37,7 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link">Réservations</a>
+            <a class="nav-link" href="{% url 'reservation_list' %}">Réservations</a>
           </li>
           {% endif %}
           <li class="nav-item">
@@ -47,7 +47,7 @@
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Bonjour, {{ user.username }}</a>
+            <a class="nav-link" >Bonjour, {{ user.username }}</a>
           </li>
           <li class="nav-item">
             <form method="post" action="{% url 'logout' %}">

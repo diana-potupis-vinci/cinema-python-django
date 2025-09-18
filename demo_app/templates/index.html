@@ -15,8 +15,8 @@
     </p>
   </div>
   {% if user.is_authenticated %}
-  <a class="btn btn-primary btn-lg mt-3">Voir mes réservations</a> #TODO: Lien
-  vers les réservations de l'utilisateur {% else %}
+  <a class="btn btn-primary btn-lg mt-3"  href="{% url 'reservation_list' %}">Voir mes réservations</a>
+  {% else %}
   <a class="btn btn-primary btn-lg mt-3" href="{% url 'film-list' %}"
     >Voir les films</a
   >

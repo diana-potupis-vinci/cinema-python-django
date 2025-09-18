@@ -1,10 +1,13 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
 from django.core.paginator import Paginator
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
-from .models import Film, Seance
+from .models import Film, Seance, Reservation
+from .forms import ReservationForm
 
 
 class IndexView(View):
@@ -61,3 +64,50 @@ class SeanceView(View):
     
 def AboutView(request):
         return render(request, 'about.html')
+
+@method_decorator(login_required, name='dispatch')
+class ReservationListView(View):
+    def get(self, request):
+        reservations = Reservation.objects.filter(user=request.user)
+        return render(request, 'reservation_list.html', {'reservations': reservations})
+
+
+@method_decorator(login_required, name='dispatch')
+class ReservationCreateView(View):
+    def get(self, request):
+        form = ReservationForm()
+        return render(request, 'reservation_form.html', {'form': form})
+
+    def post(self, request):
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.user = request.user
+            reservation.save()
+            return redirect('reservation_list')
+        return render(request, 'reservation_form.html', {'form': form})
+
+
+@method_decorator(login_required, name='dispatch')
+class ReservationUpdateView(View):
+    def get(self, request, id):
+        reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        form = ReservationForm(instance=reservation)
+        return render(request, 'reservation_form.html', {'form': form})
+
+    def post(self, request, id):
+        reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            return redirect('reservation_list')
+        return render(request, 'reservation_form.html', {'form': form})
+
+
+@method_decorator(login_required, name='dispatch')
+class ReservationDeleteView(View):
+    def post(self, request, id):
+        reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        reservation.delete()
+        return redirect('reservation_list')
+
