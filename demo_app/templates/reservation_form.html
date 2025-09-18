@@ -2,13 +2,13 @@
 {% block content %}
 <div class="container mt-5">
   <div class="card shadow">
-    <div class="card-header text-white" style="background-color: darkviolet;">Nouvelle réservation</div>
+    <div class="card-header bg-primary text-white">Nouvelle réservation</div>
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success" style="background-color: rgb(192, 18, 149);">Enregistrer</button>
-        <a href="{% url 'reservation_list' %}" class="btn btn-secondary" style="background-color: rgb(226, 152, 208);">Annuler</a>
+        <button type="submit" class="btn btn-success" style="background-color: darkviolet;">Enregistrer</button>
+        <a href="{% url 'reservation_list' %}" class="btn btn-secondary">Annuler</a>
       </form>
     </div>
   </div>
