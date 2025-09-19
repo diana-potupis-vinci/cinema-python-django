@@ -58,11 +58,12 @@ class SeanceView(View):
     def get(self, request):
         seances = Seance.objects.all()
 
-        context = {
-            'seances': seances,
-        }
+        paginator = Paginator(seances, 10)
 
-        return render(request, 'seances.html', context)
+        page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        return render(request, 'seances.html',  {"page_obj": page_obj})
     
 def AboutView(request):
         return render(request, 'about.html')
@@ -85,8 +86,13 @@ class FilmCreateView(View):
 class ReservationListView(View):
     def get(self, request):
         reservations = Reservation.objects.filter(user=request.user)
-        return render(request, 'reservation_list.html', {'reservations': reservations})
 
+        paginator = Paginator(reservations, 10)
+
+        page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        return render(request, 'reservation_list.html', {'page_obj': page_obj})
 
 @method_decorator(login_required, name='dispatch')
 class ReservationCreateView(View):
