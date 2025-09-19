@@ -33,7 +33,7 @@ class FilmsListView(View):
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
-        return render(request, 'film-list.html', {"page_obj": page_obj})
+        return render(request, 'film/film-list.html', {"page_obj": page_obj})
 
 
 class FilmView(View):
@@ -52,7 +52,7 @@ class FilmView(View):
             'seances': seances,
         }
 
-        return render(request, 'film-details.html', context)
+        return render(request, 'film/film-details.html', context)
     
 class SeanceView(View):
     def get(self, request):
@@ -72,15 +72,15 @@ def AboutView(request):
 class FilmCreateView(View):
     def get(self, request):
         form = FilmForm()
-        return render(request, 'film_form.html', {'form': form})
+        return render(request, 'film/film_form.html', {'form': form})
 
     def post(self, request):
         form = FilmForm(request.POST, request.FILES)
         if form.is_valid():
             film = form.save()
             messages.success(request, 'Le film a été ajouté avec succès!')
-            return redirect('film_detail', id=film.id)
-        return render(request, 'film_form.html', {'form': form})
+            return redirect('film/film_detail', id=film.id)
+        return render(request, 'film/film_form.html', {'form': form})
 
 @method_decorator(login_required, name='dispatch')
 class ReservationListView(View):
@@ -92,13 +92,13 @@ class ReservationListView(View):
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
-        return render(request, 'reservation_list.html', {'page_obj': page_obj})
+        return render(request, 'reservation/reservation_list.html', {'page_obj': page_obj})
 
 @method_decorator(login_required, name='dispatch')
 class ReservationCreateView(View):
     def get(self, request):
         form = ReservationForm()
-        return render(request, 'reservation_form.html', {'form': form})
+        return render(request, 'reservation/reservation_form.html', {'form': form})
 
     def post(self, request):
         form = ReservationForm(request.POST)
@@ -107,8 +107,8 @@ class ReservationCreateView(View):
             reservation.user = request.user
             reservation.save()
             messages.success(request, 'Votre réservation a été créée avec succès!')
-            return redirect('reservation_list')
-        return render(request, 'reservation_form.html', {'form': form})
+            return redirect('reservation/reservation_list')
+        return render(request, 'reservation/reservation_form.html', {'form': form})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -116,15 +116,15 @@ class ReservationUpdateView(View):
     def get(self, request, id):
         reservation = get_object_or_404(Reservation, id=id, user=request.user)
         form = ReservationForm(instance=reservation)
-        return render(request, 'reservation_form.html', {'form': form})
+        return render(request, 'reservation/reservation_form.html', {'form': form})
 
     def post(self, request, id):
         reservation = get_object_or_404(Reservation, id=id, user=request.user)
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
-            return redirect('reservation_list')
-        return render(request, 'reservation_form.html', {'form': form})
+            return redirect('reservation/reservation_list')
+        return render(request, 'reservation/reservation_form.html', {'form': form})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -132,7 +132,7 @@ class ReservationDeleteView(View):
     def post(self, request, id):
         reservation = get_object_or_404(Reservation, id=id, user=request.user)
         reservation.delete()
-        return redirect('reservation_list')
+        return redirect('reservation/reservation_list')
 
 class RegisterView(View):
     def get(self, request):
