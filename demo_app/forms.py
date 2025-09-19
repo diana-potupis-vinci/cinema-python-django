@@ -30,6 +30,9 @@ class UserRegistrationForm(UserCreationForm):
         # Update labels in French
         self.fields['password1'].label = 'Mot de passe'
         self.fields['password2'].label = 'Confirmer le mot de passe'
+        self.fields['email'].label = 'Adresse email'
+        self.fields['first_name'].label = 'Prénom'
+        self.fields['last_name'].label = 'Nom'
 
     def save(self, commit=True):
         user = super().save(commit=False)
