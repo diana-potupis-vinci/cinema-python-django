@@ -77,6 +77,7 @@ class FilmCreateView(View):
         form = FilmForm(request.POST, request.FILES)
         if form.is_valid():
             film = form.save()
+            messages.success(request, 'Le film a été ajouté avec succès!')
             return redirect('film_detail', id=film.id)
         return render(request, 'film_form.html', {'form': form})
 
@@ -99,6 +100,7 @@ class ReservationCreateView(View):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.save()
+            messages.success(request, 'Votre réservation a été créée avec succès!')
             return redirect('reservation_list')
         return render(request, 'reservation_form.html', {'form': form})
 
