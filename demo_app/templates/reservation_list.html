@@ -21,7 +21,7 @@
       <tr>
         <td>{{ r.seance.film.title }}</td>
         <td>{{ r.seance.date }}</td>
-        <td>{{ r.seance.time }}</td>
+        <td>{{ r.seance.time|time:"H:i" }}</td>
         <td>{{ r.seance.hall.name }}</td>
         <td>{{ r.places }}</td>
         <td>
