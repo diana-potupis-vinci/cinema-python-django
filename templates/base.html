@@ -39,6 +39,8 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'reservation_list' %}">Réservations</a>
           </li>
+          {% endif %}
+          {% if user.is_authenticated and user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'film_add' %}">Ajouter un film</a>
           </li>
