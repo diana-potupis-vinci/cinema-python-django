@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from .models import Film, Seance, Reservation
-from .forms import ReservationForm
+from .forms import ReservationForm, FilmForm
 
 
 class IndexView(View):
@@ -64,6 +64,19 @@ class SeanceView(View):
     
 def AboutView(request):
         return render(request, 'about.html')
+
+@method_decorator(login_required, name='dispatch')
+class FilmCreateView(View):
+    def get(self, request):
+        form = FilmForm()
+        return render(request, 'film_form.html', {'form': form})
+
+    def post(self, request):
+        form = FilmForm(request.POST, request.FILES)
+        if form.is_valid():
+            film = form.save()
+            return redirect('film_detail', id=film.id)
+        return render(request, 'film_form.html', {'form': form})
 
 @method_decorator(login_required, name='dispatch')
 class ReservationListView(View):

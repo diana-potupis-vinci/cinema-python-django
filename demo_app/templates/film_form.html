@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Ajouter un Film - Cinéma{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 pt-5">
+        <div class="card shadow" >
+            <div class="card-header bg-primary text-white"  >
+                <h3 class="card-title mb-0" >
+                    <i class="fas fa-film me-2"></i>Ajouter un nouveau film
+                </h3>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <h5>Erreurs dans le formulaire :</h5>
+                            {{ form.errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
+                                {{ form.title }}
+                                {% if form.title.errors %}
+                                    <div class="text-danger">{{ form.title.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="{{ form.duration.id_for_label }}" class="form-label">{{ form.duration.label }}</label>
+                                {{ form.duration }}
+                                <div class="form-text">Format: HH:MM:SS (ex: 02:30:00)</div>
+                                {% if form.duration.errors %}
+                                    <div class="text-danger">{{ form.duration.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="{{ form.genre.id_for_label }}" class="form-label">{{ form.genre.label }}</label>
+                                {{ form.genre }}
+                                {% if form.genre.errors %}
+                                    <div class="text-danger">{{ form.genre.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="{{ form.poster.id_for_label }}" class="form-label">{{ form.poster.label }}</label>
+                                {{ form.poster }}
+                                {% if form.poster.errors %}
+                                    <div class="text-danger">{{ form.poster.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.actors.id_for_label }}" class="form-label">{{ form.actors.label }}</label>
+                        {{ form.actors }}
+                        <div class="form-text">Maintenez Ctrl/Cmd pour sélectionner plusieurs acteurs</div>
+                        {% if form.actors.errors %}
+                            <div class="text-danger">{{ form.actors.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">{{ form.description.label }}</label>
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="text-danger">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'film-list' %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Retour
+                        </a>
+                        <button type="submit" class="btn btn-primary" style="background-color: darkviolet;">
+                            <i class="fas fa-save me-2"></i>Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
