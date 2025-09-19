@@ -163,4 +163,4 @@ Accédez à `/admin/` avec vos identifiants de superutilisateur pour :
 **Diana Potupis** - *Développement initial* - [diana-potupis-vinci](https://github.com/diana-potupis-vinci)
 ---
 
-*Développé avec ❤️ dans le cadre du programme de développement web*
+*Développé avec ❤️ dans le cadre du programme de programmation web et sécurité*
