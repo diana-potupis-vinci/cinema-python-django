@@ -12,12 +12,6 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
-        labels = {
-            'username': "Nom d'utilisateur",
-            'first_name': 'Prénom',
-            'last_name': 'Nom',
-            'email': 'Adresse email',
-        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -34,6 +28,7 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['email'].label = 'Adresse email'
         self.fields['first_name'].label = 'Prénom'
         self.fields['last_name'].label = 'Nom'
+        self.fields['username'].label = "Nom d'utilisateur"
 
     def save(self, commit=True):
         user = super().save(commit=False)
