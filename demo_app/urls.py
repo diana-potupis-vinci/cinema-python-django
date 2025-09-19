@@ -12,4 +12,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html',redirect_authenticated_user=True ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('about/', views.AboutView, name='about'),
+    path('reservations/', views.ReservationListView.as_view(), name='reservation_list'),
+    path('reservations/new/', views.ReservationCreateView.as_view(), name='reservation_create'),
+    path('reservations/<int:id>/edit/', views.ReservationUpdateView.as_view(), name='reservation_edit'),
+    path('reservations/<int:id>/delete/', views.ReservationDeleteView.as_view(), name='reservation_delete'),
 ]

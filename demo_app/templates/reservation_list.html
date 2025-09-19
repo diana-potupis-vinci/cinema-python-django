@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-white text-center m-3 p-3 bg-dark bg-opacity-75 rounded-3 shadow">Mes réservations</h2>
+  <a href="{% url 'reservation_create' %}" class="btn btn-success mb-3">➕ Nouvelle réservation</a>
+
+  {% if reservations %}
+  <table class="table table-bordered bg-white shadow">
+    <thead>
+      <tr>
+        <th>Film</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Salle</th>
+        <th>Places</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in reservations %}
+      <tr>
+        <td>{{ r.seance.film.title }}</td>
+        <td>{{ r.seance.date }}</td>
+        <td>{{ r.seance.time }}</td>
+        <td>{{ r.seance.hall.name }}</td>
+        <td>{{ r.places }}</td>
+        <td>
+            <a href="{% url 'reservation_edit' r.id %}" class="btn btn-sm btn-warning" style="background-color: rgb(226, 98, 226) ;">Modifier</a>
+            <form action="{% url 'reservation_delete' r.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-danger" style="background-color: darkviolet;">Supprimer</button>
+            </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="alert alert-info">Vous n’avez aucune réservation.</p>
+  {% endif %}
+</div>
+{% endblock %}
