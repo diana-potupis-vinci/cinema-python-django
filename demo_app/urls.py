@@ -11,6 +11,7 @@ urlpatterns = [
     path('films/add/', views.FilmCreateView.as_view(), name='film_add'),
     path('seances/', views.SeanceView.as_view(), name="seances"),
     path('login/', auth_views.LoginView.as_view(template_name='login.html',redirect_authenticated_user=True ), name='login'),
+    path('register/', views.RegisterView.as_view(), name='register'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('about/', views.AboutView, name='about'),
     path('reservations/', views.ReservationListView.as_view(), name='reservation_list'),
