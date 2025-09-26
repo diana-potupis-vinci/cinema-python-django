@@ -5,75 +5,24 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-5">
         <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white">
-                <h3 class="card-title mb-0 text-center">
-                    <i class="fas fa-sign-in-alt me-2"></i>Connexion
-                </h3>
-            </div>
+            {% include 'snippets/card_header_snippet.html' with header_title='Connexion' header_icon='fas fa-sign-in-alt' header_centered=True %}
             <div class="card-body p-4">
-                <!-- Messages d'erreur généraux -->
-                {% if form.errors or form.non_field_errors %}
-                    <div class="alert alert-danger">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Erreur de connexion:</strong>
-                        {% if form.non_field_errors %}
-                            {% for error in form.non_field_errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        {% else %}
-                            <div>Nom d'utilisateur ou mot de passe incorrect.</div>
-                        {% endif %}
-                    </div>
-                {% endif %}
-                
                 <form method="post">
                     {% csrf_token %}
                     
-                    <div class="mb-3">
-                        <label for="id_username" class="form-label">
-                            <i class="fas fa-user me-1"></i>Nom d'utilisateur
-                        </label>
-                        <input type="text" name="username" class="form-control" 
-                               required id="id_username" 
-                               placeholder="Entrez votre nom d'utilisateur"
-                               value="{{ form.username.value|default_if_none:'' }}">
-                        {% if form.username.errors %}
-                            <div class="text-danger mt-1">
-                                {% for error in form.username.errors %}
-                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="id_password" class="form-label">
-                            <i class="fas fa-lock me-1"></i>Mot de passe
-                        </label>
-                        <input type="password" name="password" class="form-control" 
-                               required id="id_password" 
-                               placeholder="Entrez votre mot de passe">
-                        {% if form.password.errors %}
-                            <div class="text-danger mt-1">
-                                {% for error in form.password.errors %}
-                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
+                    <!-- Messages d'erreur généraux -->
+                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title='Erreurs de validation' %}
                     
-                    <button type="submit" class="btn btn-primary w-100 mb-3" style="background-color: darkviolet; border-color: darkviolet;">
-                        <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                    </button>
+                    {% include 'snippets/login_form_snippet.html' with username_value=form.username.value|default_if_none:'' username_errors=form.username.errors password_errors=form.password.errors %}
+                    
+                    {% include 'snippets/button_snippet.html' with button_text='Se connecter' button_icon='fas fa-sign-in-alt' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
                 </form>
                 
                 <hr class="my-3">
                 
                 <div class="text-center">
                     <p class="mb-2 text-muted">Pas encore de compte?</p>
-                    <a href="{% url 'register' %}" class="btn btn-outline-secondary">
-                        <i class="fas fa-user-plus me-2"></i>Créer un compte
-                    </a>
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='register' button_text='Créer un compte' button_icon='fas fa-user-plus' button_style='outline-secondary' %}
                 </div>
             </div>
         </div>

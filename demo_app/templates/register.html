@@ -5,141 +5,45 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-7">
         <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white">
-                <h3 class="card-title mb-0 text-center">
-                    <i class="fas fa-user-plus me-2"></i>Créer un compte
-                </h3>
-            </div>
+            {% include 'snippets/card_header_snippet.html' with header_title='Créer un compte' header_icon='fas fa-user-plus' header_centered=True %}
+            
             <div class="card-body p-4">
-                <!-- Messages d'erreur généraux -->
-                {% if form.non_field_errors %}
-                    <div class="alert alert-danger">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Erreurs de validation:</strong>
-                        {% for error in form.non_field_errors %}
-                            <div>{{ error }}</div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
                 <form method="post">
                     {% csrf_token %}
                     
+                    <!-- Messages d'erreur généraux -->
+                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title='Erreurs de validation' %}  
                     <!-- Nom et prénom sur la même ligne -->
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="{{ form.first_name.id_for_label }}" class="form-label">
-                                    <i class="fas fa-user me-1"></i>{{ form.first_name.label }}
-                                </label>
-                                {{ form.first_name }}
-                                {% if form.first_name.errors %}
-                                    <div class="text-danger mt-1">
-                                        {% for error in form.first_name.errors %}
-                                            <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
+                            {% include 'snippets/field_with_icon_snippet.html' with field=form.first_name field_icon='fas fa-user' %}
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="{{ form.last_name.id_for_label }}" class="form-label">
-                                    <i class="fas fa-user me-1"></i>{{ form.last_name.label }}
-                                </label>
-                                {{ form.last_name }}
-                                {% if form.last_name.errors %}
-                                    <div class="text-danger mt-1">
-                                        {% for error in form.last_name.errors %}
-                                            <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
+                            {% include 'snippets/field_with_icon_snippet.html' with field=form.last_name field_icon='fas fa-user' %}
                         </div>
                     </div>
+                    <!-- Autres champs -->
+                    {% include 'snippets/field_with_icon_snippet.html' with field=form.username field_icon='fas fa-at' %}
+                    {% include 'snippets/field_with_icon_snippet.html' with field=form.email field_icon='fas fa-envelope' %}
 
-                    <!-- Nom d'utilisateur -->
-                    <div class="mb-3">
-                        <label for="{{ form.username.id_for_label }}" class="form-label">
-                            <i class="fas fa-at me-1"></i>{{ form.username.label }}
-                        </label>
-                        {{ form.username }}
-                        {% if form.username.errors %}
-                            <div class="text-danger mt-1">
-                                {% for error in form.username.errors %}
-                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-
-                    <!-- Email -->
-                    <div class="mb-3">
-                        <label for="{{ form.email.id_for_label }}" class="form-label">
-                            <i class="fas fa-envelope me-1"></i>{{ form.email.label }}
-                        </label>
-                        {{ form.email }}
-                        {% if form.email.errors %}
-                            <div class="text-danger mt-1">
-                                {% for error in form.email.errors %}
-                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-
-                    <!-- Mot de passe et confirmation sur la même ligne -->
+                    <!--- Les mots de passe -->
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="{{ form.password1.id_for_label }}" class="form-label">
-                                    <i class="fas fa-lock me-1"></i>{{ form.password1.label }}
-                                </label>
-                                {{ form.password1 }}
-                                {% if form.password1.errors %}
-                                    <div class="text-danger mt-1">
-                                        {% for error in form.password1.errors %}
-                                            <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                                {% if form.password1.help_text %}
-                                    <small class="form-text text-muted">
-                                        <i class="fas fa-info-circle me-1"></i>{{ form.password1.help_text }}
-                                    </small>
-                                {% endif %}
-                            </div>
+                            {% include 'snippets/field_with_icon_snippet.html' with field=form.password1 field_icon='fas fa-lock' %}
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-4">
-                                <label for="{{ form.password2.id_for_label }}" class="form-label">
-                                    <i class="fas fa-lock me-1"></i>{{ form.password2.label }}
-                                </label>
-                                {{ form.password2 }}
-                                {% if form.password2.errors %}
-                                    <div class="text-danger mt-1">
-                                        {% for error in form.password2.errors %}
-                                            <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
+                            {% include 'snippets/field_with_icon_snippet.html' with field=form.password2 field_icon='fas fa-lock' extra_classes='mb-4' %}
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 mb-3" style="background-color: darkviolet; border-color: darkviolet;">
-                        <i class="fas fa-user-plus me-2"></i>Créer mon compte
-                    </button>
+                    {% include 'snippets/button_snippet.html' with button_text='Créer mon compte' button_icon='fas fa-user-plus' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
                 </form>
 
                 <hr class="my-3">
 
                 <div class="text-center">
                     <p class="mb-2 text-muted">Vous avez déjà un compte?</p>
-                    <a href="{% url 'login' %}" class="btn btn-outline-secondary">
-                        <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                    </a>
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='login' button_text='Se connecter' button_icon='fas fa-sign-in-alt' button_style='outline-secondary' %}
                 </div>
             </div>
         </div>

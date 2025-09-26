@@ -1,0 +1,13 @@
+{% if button_type == 'link' %}
+    <a href="{% url button_url %}" 
+       class="btn btn-{{ button_style|default:'secondary' }}{% if button_size %} btn-{{ button_size }}{% endif %}{% if extra_classes %} {{ extra_classes }}{% endif %}"
+       {% if custom_style %}style="{{ custom_style }}"{% endif %}>
+        {% if button_icon %}<i class="{{ button_icon }} me-2"></i>{% endif %}{{ button_text }}
+    </a>
+{% else %}
+    <button type="{{ button_type|default:'submit' }}" 
+            class="btn btn-{{ button_style|default:'primary' }}{% if button_size %} btn-{{ button_size }}{% endif %}{% if extra_classes %} {{ extra_classes }}{% endif %}"
+            {% if custom_style %}style="{{ custom_style }}"{% endif %}>
+        {% if button_icon %}<i class="{{ button_icon }} me-2"></i>{% endif %}{{ button_text }}
+    </button>
+{% endif %}

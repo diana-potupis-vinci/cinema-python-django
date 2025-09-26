@@ -15,12 +15,7 @@
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     
-                    {% if form.errors %}
-                        <div class="alert alert-danger">
-                            <h5>Erreurs dans le formulaire :</h5>
-                            {{ form.errors }}
-                        </div>
-                    {% endif %}
+                    {% include 'snippets/alert_snippet.html' with errors=form.errors alert_title='Erreurs dans le formulaire' %}
 
                     <div class="row">
                         <div class="col-md-6">
