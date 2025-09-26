@@ -10,9 +10,17 @@
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success" style="background-color: darkviolet;">Enregistrer</button>
-        <a href="{% url 'reservation_list' %}" class="btn btn-secondary">Annuler</a>
+        
+        {% include 'snippets/form_snippet.html' with form=form %}
+        
+        <div class="d-flex gap-2 mt-4">
+          <button type="submit" class="btn btn-success" style="background-color: darkviolet;">
+            <i class="fas fa-save me-1"></i>Enregistrer
+          </button>
+          <a href="{% url 'reservation_list' %}" class="btn btn-secondary">
+            <i class="fas fa-times me-1"></i>Annuler
+          </a>
+        </div>
       </form>
     </div>
   </div>
