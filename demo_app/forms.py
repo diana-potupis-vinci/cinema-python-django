@@ -40,6 +40,12 @@ class UserRegistrationForm(UserCreationForm):
         return user
 
 class ReservationForm(forms.ModelForm):
+    places = forms.IntegerField(
+        min_value=1,
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
+        label='Nombre de places'
+    )
+
     class Meta:
         model = Reservation
         fields = ['seance', 'places']
@@ -49,7 +55,6 @@ class ReservationForm(forms.ModelForm):
         }
         widgets = {
             'seance': forms.Select(attrs={'class': 'form-select'}),
-            'places': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
         }
 
 class FilmForm(forms.ModelForm):

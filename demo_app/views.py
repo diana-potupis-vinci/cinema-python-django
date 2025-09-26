@@ -79,7 +79,7 @@ class FilmCreateView(View):
         if form.is_valid():
             film = form.save()
             messages.success(request, 'Le film a été ajouté avec succès!')
-            return redirect('film/film_detail', id=film.id)
+            return redirect('film_detail', id=film.id)
         return render(request, 'film/film_form.html', {'form': form})
 
 @method_decorator(login_required, name='dispatch')
@@ -107,7 +107,7 @@ class ReservationCreateView(View):
             reservation.user = request.user
             reservation.save()
             messages.success(request, 'Votre réservation a été créée avec succès!')
-            return redirect('reservation/reservation_list')
+            return redirect('reservation_list')
         return render(request, 'reservation/reservation_form.html', {'form': form})
 
 
@@ -123,7 +123,7 @@ class ReservationUpdateView(View):
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
-            return redirect('reservation/reservation_list')
+            return redirect('reservation_list')
         return render(request, 'reservation/reservation_form.html', {'form': form})
 
 
@@ -132,7 +132,7 @@ class ReservationDeleteView(View):
     def post(self, request, id):
         reservation = get_object_or_404(Reservation, id=id, user=request.user)
         reservation.delete()
-        return redirect('reservation/reservation_list')
+        return redirect('reservation_list')
 
 class RegisterView(View):
     def get(self, request):
