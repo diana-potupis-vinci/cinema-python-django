@@ -8,3 +8,96 @@
     flex-direction: column;
     justify-content: flex-start;
   }
+
+.required-field label::after {
+    content: ' *';
+    color: #dc3545;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: darkviolet;
+    box-shadow: 0 0 0 0.2rem rgba(148, 0, 211, 0.25);
+}
+
+.text-danger small {
+    font-size: 0.875em;
+}
+
+.card-header .fas {
+    opacity: 0.8;
+}
+
+.text-danger {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+    transition: all 0.2s ease-in-out;
+    
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background: linear-gradient(135deg, darkviolet, #8a2be2) !important;
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.form-control:focus::placeholder {
+    opacity: 0.4;
+}
+
+.form-label .fas {
+    color: darkviolet;
+    opacity: 0.8;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    color: #721c24;
+}
+
+/* Reservation form specific styles */
+.card-body .row .col-md-6:first-child {
+    padding-right: 0.75rem;
+}
+
+.card-body .row .col-md-6:last-child {
+    padding-left: 0.75rem;
+}
+
+.btn-outline-secondary {
+    border-width: 1px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transform: translateY(-1px);
+}
