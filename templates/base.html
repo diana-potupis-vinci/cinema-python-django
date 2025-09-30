@@ -55,6 +55,9 @@
             <a class="nav-link" >Bonjour, {{ user.username }}</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile_edit' %}">Modifier le profil</a>
+          </li>
+          <li class="nav-item">
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
               <button type="submit" class="btn btn-link nav-link" style="padding: 2; border: none; cursor: pointer;">Déconnexion</button>

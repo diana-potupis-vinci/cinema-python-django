@@ -5,11 +5,10 @@ from django.core.paginator import Paginator
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.contrib.auth import login
 from django.contrib import messages
 
 from .models import Film, Seance, Reservation
-from .forms import ReservationForm, UserRegistrationForm, FilmForm
+from .forms import ReservationForm, FilmForm
 
 
 class IndexView(View):
@@ -132,22 +131,5 @@ class ReservationDeleteView(View):
     def post(self, request, id):
         reservation = get_object_or_404(Reservation, id=id, user=request.user)
         reservation.delete()
+        messages.success(request, 'Votre réservation a été supprimée avec succès!')
         return redirect('reservation_list')
-
-class RegisterView(View):
-    def get(self, request):
-        if request.user.is_authenticated:
-            return redirect('index')
-        form = UserRegistrationForm()
-        return render(request, 'register.html', {'form': form})
-
-    def post(self, request):
-        if request.user.is_authenticated:
-            return redirect('index')
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, 'Votre compte a été créé avec succès!')
-            return redirect('login')
-        return render(request, 'register.html', {'form': form})

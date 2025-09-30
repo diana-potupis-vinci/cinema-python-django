@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}Modifier le profil - Cinéma{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-lg">
+            {% include 'snippets/card_header_snippet.html' with header_title='Modifier le profil' header_icon='fas fa-user-edit' header_centered=True %}
+            <div class="card-body p-4">
+                
+                <!-- Messages de succès -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>{{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <!-- Messages d'erreur généraux -->
+                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title='Erreurs de validation' %}
+                    
+                    <!-- Champ nom d'utilisateur -->
+                    <div class="mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">
+                            <i class="fas fa-user me-1"></i>{{ form.username.label }}
+                        </label>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="text-danger mt-1">
+                                {% for error in form.username.errors %}
+                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Champ prénom -->
+                    <div class="mb-3">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">
+                            <i class="fas fa-id-card me-1"></i>{{ form.first_name.label }}
+                        </label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="text-danger mt-1">
+                                {% for error in form.first_name.errors %}
+                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Champ nom -->
+                    <div class="mb-3">
+                        <label for="{{ form.last_name.id_for_label }}" class="form-label">
+                            <i class="fas fa-id-card me-1"></i>{{ form.last_name.label }}
+                        </label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="text-danger mt-1">
+                                {% for error in form.last_name.errors %}
+                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Champ email -->
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">
+                            <i class="fas fa-envelope me-1"></i>{{ form.email.label }}
+                        </label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger mt-1">
+                                {% for error in form.email.errors %}
+                                    <small><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    {% include 'snippets/button_snippet.html' with button_text='Mettre à jour' button_icon='fas fa-save' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
+                </form>
+                
+                <hr class="my-3">
+                
+                <div class="text-center">
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='password_change' button_text='Changer le mot de passe' button_icon='fas fa-key' button_style='outline-warning' extra_classes='mb-2' %}
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='index' button_text='Retour à l\'accueil' button_icon='fas fa-home' button_style='outline-secondary' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
