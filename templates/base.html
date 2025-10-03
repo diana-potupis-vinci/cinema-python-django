@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ LANGUAGE_CODE|default:'fr' }}">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,6 +35,33 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'seances' %}">Séances</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-globe me-1"></i>
+              {% get_current_language as LANGUAGE_CODE %}
+              {% if LANGUAGE_CODE == 'fr' %}Français{% else %}English{% endif %}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="languageDropdown">
+              <li>
+                <a class="dropdown-item {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" 
+                   href="#" onclick="changeLanguage('fr')">
+                  Français
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item {% if LANGUAGE_CODE == 'en' %}active{% endif %}" 
+                   href="#" onclick="changeLanguage('en')">
+                  English  
+                </a>
+              </li>
+            </ul>
+            <form id="language-form" action="/i18n/setlang/" method="post" style="display: none;">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ request.get_full_path }}">
+              <input id="language-input" name="language" type="hidden">
+            </form>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
@@ -101,6 +129,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+  
+  <!-- Language switcher script -->
+  <script>
+    function changeLanguage(lang) {
+      document.getElementById('language-input').value = lang;
+      document.getElementById('language-form').submit();
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownItems = document.querySelectorAll('#languageDropdown + .dropdown-menu .dropdown-item');
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const dropdown = bootstrap.Dropdown.getInstance(document.getElementById('languageDropdown'));
+          if (dropdown) {
+            dropdown.hide();
+          }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
