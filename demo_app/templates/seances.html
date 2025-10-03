@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Séances{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Séances" %}{% endblock %}
 
 {% block content %}
 <div class="container">
-  <h2 class="text-white text-center m-3 p-3 bg-dark bg-opacity-75 rounded-3 shadow">Liste des séances</h2>
+  <h2 class="text-white text-center m-3 p-3 bg-dark bg-opacity-75 rounded-3 shadow">{% trans "Liste des séances" %}</h2>
 
   {% if page_obj %}
     <table class="table table-bordered table-hover bg-white shadow table-striped" style="--bs-table-striped-bg: rgb(214, 162, 236);">
       <thead class="table-light">
         <tr>
-          <th>Film</th>
-          <th>Date</th>
-          <th>Heure</th>
-          <th>Salle</th>
+          <th>{% trans "Film" %}</th>
+          <th>{% trans "Date" %}</th>
+          <th>{% trans "Heure" %}</th>
+          <th>{% trans "Salle" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +30,7 @@
       </tbody>
     </table>
   {% else %}
-    <p class="alert alert-warning">Aucune séance trouvée.</p>
+    <p class="alert alert-warning">{% trans "Aucune séance trouvée." %}</p>
   {% endif %}
 </div>
 

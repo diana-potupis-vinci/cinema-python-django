@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <title>{% block title %}Cinéma{% endblock %}</title>
+  <title>{% block title %}{% trans "Cinéma" %}{% endblock %}</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -30,11 +30,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'film-list' %}">{% trans "Films" %}</a>
+            </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'film-list' %}">Films</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'seances' %}">Séances</a>
+            <a class="nav-link" href="{% url 'seances' %}">{% trans "Séances" %}</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" 
@@ -65,16 +65,16 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'reservation_list' %}">Réservations</a>
+            <a class="nav-link" href="{% url 'reservation_list' %}">{% trans "Réservations" %}</a>
           </li>
           {% endif %}
           {% if user.is_authenticated and user.is_superuser %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'film_add' %}">Ajouter un film</a>
+            <a class="nav-link" href="{% url 'film_add' %}">{% trans "Ajouter un film" %}</a>
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">À propos</a>
+            <a class="nav-link" href="{% url 'about' %}">{% trans "À propos" %}</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -83,20 +83,20 @@
             <a class="nav-link" >Bonjour, {{ user.username }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile_edit' %}">Modifier le profil</a>
+            <a class="nav-link" href="{% url 'profile_edit' %}">{% trans "Modifier le profil" %}</a>
           </li>
           <li class="nav-item">
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-link nav-link" style="padding: 2; border: none; cursor: pointer;">Déconnexion</button>
+              <button type="submit" class="btn btn-link nav-link" style="padding: 2; border: none; cursor: pointer;">{% trans "Déconnexion" %}</button>
             </form>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+            <a class="nav-link" href="{% url 'login' %}">{% trans "Connexion" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Inscription</a>
+            <a class="nav-link" href="{% url 'register' %}">{% trans "Inscription" %}</a>
           </li>
           {% endif %}
         </ul>

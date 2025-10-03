@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.utils.translation import gettext as _
 
 from .models import Film, Seance, Reservation
 from .forms import ReservationForm, FilmForm
@@ -77,7 +78,7 @@ class FilmCreateView(View):
         form = FilmForm(request.POST, request.FILES)
         if form.is_valid():
             film = form.save()
-            messages.success(request, 'Le film a été ajouté avec succès!')
+            messages.success(request, _('Le film a été ajouté avec succès!'))
             return redirect('film_detail', id=film.id)
         return render(request, 'film/film_form.html', {'form': form})
 
@@ -105,7 +106,7 @@ class ReservationCreateView(View):
             reservation = form.save(commit=False)
             reservation.user = request.user
             reservation.save()
-            messages.success(request, 'Votre réservation a été créée avec succès!')
+            messages.success(request, _('Votre réservation a été créée avec succès!'))
             return redirect('reservation_list')
         return render(request, 'reservation/reservation_form.html', {'form': form})
 
@@ -131,5 +132,5 @@ class ReservationDeleteView(View):
     def post(self, request, id):
         reservation = get_object_or_404(Reservation, id=id, user=request.user)
         reservation.delete()
-        messages.success(request, 'Votre réservation a été supprimée avec succès!')
+        messages.success(request, _('Votre réservation a été supprimée avec succès!'))
         return redirect('reservation_list')

@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Hall, Genre, Film, Actor, Seance, Reservation
+from .models import Hall, Genre, Film, Actor
 
 @register(Hall)
 class HallTranslationOptions(TranslationOptions):
@@ -16,11 +16,3 @@ class FilmTranslationOptions(TranslationOptions):
 @register(Actor)
 class ActorTranslationOptions(TranslationOptions):
     fields = ('biography',)
-
-@register(Seance)
-class SeanceTranslationOptions(TranslationOptions):
-    fields = ()  
-
-@register(Reservation)
-class ReservationTranslationOptions(TranslationOptions):
-    fields = ()  

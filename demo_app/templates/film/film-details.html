@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block title %}{{ film.title }}{% endblock %}
 
 {% block content %}
@@ -27,19 +28,19 @@
           <h1 class="mb-4">{{ film.title }}</h1>
 
           <p class="mb-2">
-            <strong>Genre:</strong>
+            <strong>{% trans "Genre:" %}</strong>
             <span class="text-muted">{{ film.genre }}</span>
           </p>
           <p class="mb-2">
-            <strong>Duration:</strong>
+            <strong>{% trans "Duration:" %}</strong>
             <span class="text-muted">{{ film.duration }}</span>
           </p>
           <p class="mb-4">
-            <strong>Description:</strong><br />
+            <strong>{% trans "Description:" %}</strong><br />
             <span class="text-muted">{{ film.description }}</span>
           </p>
 
-          <h5 class="mb-3">Séances disponibles:</h5>
+          <h5 class="mb-3">{% trans "Séances disponibles:" %}</h5>
 
           {% if seances %}
             <ul class="list-unstyled">
@@ -52,9 +53,9 @@
               {% endfor %}
             </ul>
           {% else %}
-            <p class="text-muted">Aucune séance prévue.</p>
+            <p class="text-muted">{% trans "Aucune séance prévue." %}</p>
           {% endif %}
-          <h5 class="mb-3">Actors:</h5>
+          <h5 class="mb-3">{% trans "Acteurs:" %}</h5>
           <div class="row g-3">
             {% for actor in film.actors.all %}
             <div class="col-md-6">
@@ -70,13 +71,13 @@
               </div>
             </div>
             {% empty %}
-            <p>No actors listed.</p>
+            <p>{% trans "Aucun acteur répertorié." %}</p>
             {% endfor %}
           </div>
 
           <div class="mt-4">
             <a href="{% url 'film-list' %}" class="btn btn-primary" style="background-color: darkviolet; border-color: darkviolet;"
-              >Retour à la liste des films</a
+              >{% trans "Retour à la liste des films" %}</a
             >
           </div>
         </div>

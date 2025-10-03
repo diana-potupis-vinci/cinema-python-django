@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}Ajouter un Film - Cinéma{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Ajouter un Film - Cinéma" %}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -8,14 +8,14 @@
         <div class="card shadow" >
             <div class="card-header bg-primary text-white"  >
                 <h3 class="card-title mb-0" >
-                    <i class="fas fa-film me-2"></i>Ajouter un nouveau film
+                    <i class="fas fa-film me-2"></i>{% trans "Ajouter un nouveau film" %}
                 </h3>
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    
-                    {% include 'snippets/alert_snippet.html' with errors=form.errors alert_title='Erreurs dans le formulaire' %}
+
+                    {% include 'snippets/alert_snippet.html' with errors=form.errors alert_title=_('Erreurs dans le formulaire') %}
 
                     <div class="row">
                         <div class="col-md-6">
@@ -63,7 +63,7 @@
                     <div class="mb-3">
                         <label for="{{ form.actors.id_for_label }}" class="form-label">{{ form.actors.label }}</label>
                         {{ form.actors }}
-                        <div class="form-text">Maintenez Ctrl/Cmd pour sélectionner plusieurs acteurs</div>
+                        <div class="form-text">{% trans "Maintenez Ctrl/Cmd pour sélectionner plusieurs acteurs" %}</div>
                         {% if form.actors.errors %}
                             <div class="text-danger">{{ form.actors.errors }}</div>
                         {% endif %}
@@ -79,10 +79,10 @@
 
                     <div class="d-flex justify-content-between">
                         <a href="{% url 'film-list' %}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour
+                            <i class="fas fa-arrow-left me-2"></i>{% trans "Retour" %}
                         </a>
                         <button type="submit" class="btn btn-primary" style="background-color: darkviolet;">
-                            <i class="fas fa-save me-2"></i>Enregistrer
+                            <i class="fas fa-save me-2"></i>{% trans "Enregistrer" %}
                         </button>
                     </div>
                 </form>

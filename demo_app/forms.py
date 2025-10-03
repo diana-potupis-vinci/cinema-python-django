@@ -1,19 +1,20 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import Reservation, Film
 
 class ReservationForm(forms.ModelForm):
     places = forms.IntegerField(
         min_value=1,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
-        label='Nombre de places'
+        label=_('Nombre de places')
     )
 
     class Meta:
         model = Reservation
         fields = ['seance', 'places']
         labels = {
-            'seance': 'Séance',
-            'places': 'Nombre de places',
+            'seance': _('Séance'),
+            'places': _('Nombre de places'),
         }
         widgets = {
             'seance': forms.Select(attrs={'class': 'form-select'}),
@@ -24,12 +25,12 @@ class FilmForm(forms.ModelForm):
         model = Film
         fields = ['title', 'description', 'duration', 'genre', 'poster', 'actors']
         labels = {
-            'title': 'Titre',
-            'description': 'Description',
-            'duration': 'Durée',
-            'genre': 'Genre',
-            'poster': 'Affiche',
-            'actors': 'Acteurs',
+            'title': _('Titre'),
+            'description': _('Description'),
+            'duration': _('Durée'),
+            'genre': _('Genre'),
+            'poster': _('Affiche'),
+            'actors': _('Acteurs'),
         }
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),

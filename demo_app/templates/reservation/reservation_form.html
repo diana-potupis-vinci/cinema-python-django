@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
 <div class="container mt-5">
   <div class="card shadow">
-    {% include 'snippets/card_header_snippet.html' with header_title='Réserver une séance' header_icon='fas fa-calendar-alt' %}
+    {% include 'snippets/card_header_snippet.html' with header_title=_('Réserver une séance') header_icon='fas fa-calendar-alt' %}
     
     <div class="card-body">
       <form method="post">
@@ -11,8 +12,8 @@
         {% include 'snippets/form_snippet.html' with form=form %}
         
         <div class="d-flex gap-2 mt-4">
-          {% include 'snippets/button_snippet.html' with button_text='Enregistrer' button_icon='fas fa-save' button_style='success' custom_style='background-color: darkviolet;' %}
-          {% include 'snippets/button_snippet.html' with button_type='link' button_url='reservation_list' button_text='Annuler' button_icon='fas fa-times' button_style='secondary' %}
+          {% include 'snippets/button_snippet.html' with button_text=_('Enregistrer') button_icon='fas fa-save' button_style='success' custom_style='background-color: darkviolet;' %}
+          {% include 'snippets/button_snippet.html' with button_type='link' button_url='reservation_list' button_text=_('Annuler') button_icon='fas fa-times' button_style='secondary' %}
         </div>
       </form>
     </div>

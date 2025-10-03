@@ -1,56 +1,56 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}À propos{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center min-vh-100">
   <div class="text-white py-5 card bg-dark bg-opacity-75 shadow w-100" style="max-width: 900px;">
     <div class="container">
-      <h1 class="mb-4 text-center">À propos de notre Cinéma</h1>
+      <h1 class="mb-4 text-center">{% trans "À propos de notre Cinéma" %}</h1>
 
       <p class="lead text-center">
-        Bienvenue sur notre site de réservation de films ! 🎬
+        {% trans "Bienvenue sur notre site de réservation de films ! 🎬" %}
       </p>
 
-      <h3 class="mt-5">Notre mission</h3>
+      <h3 class="mt-5">{% trans "Notre mission" %}</h3>
       <p>
-        Offrir une expérience cinématographique agréable et simple, avec la
-        possibilité de réserver vos places en ligne.
+        {% trans "Offrir une expérience cinématographique agréable et simple, avec la possibilité de réserver vos places en ligne." %}
       </p>
 
-      <h3 class="mt-4">Tarifs des billets</h3>
+      <h3 class="mt-4">{% trans "Tarifs des billets" %}</h3>
       <div class="row g-4 mt-3 text-white">
         <div class="col-md-4">
           <div class="card text-center shadow" style="background-color: rgb(163, 30, 163);">
             <div class="card-body">
-              <h5 class="card-title">Adulte</h5>
+              <h5 class="card-title">{% trans "Adulte" %}</h5>
               <p class="card-text display-6">12 €</p>
-              <p class="card-text">Accès à toutes les séances à partir de 18 ans.</p>
+              <p class="card-text">{% trans "Accès à toutes les séances à partir de 18 ans." %}</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card text-center shadow" style="background-color: darkviolet;">
             <div class="card-body">
-              <h5 class="card-title">Enfant</h5>
+              <h5 class="card-title">{% trans "Enfant" %}</h5>
               <p class="card-text display-6">7 €</p>
-              <p class="card-text">Pour les moins de 12 ans.</p>
+              <p class="card-text">{% trans "Pour les moins de 12 ans." %}</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card text-center shadow" style="background-color: rgb(226, 98, 226);">
             <div class="card-body">
-              <h5 class="card-title">Étudiant</h5>
+              <h5 class="card-title">{% trans "Étudiant" %}</h5>
               <p class="card-text display-6">9 €</p>
-              <p class="card-text">Tarif spécial sur présentation d’une carte étudiante.</p>
+              <p class="card-text">{% trans "Tarif spécial sur présentation d’une carte étudiante." %}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <h3 class="mt-5">Contact</h3>
-      <p>Email: info@cinema.fr</p>
-      <p>Téléphone: +1 514-123-4567</p>
+      <h3 class="mt-5">{% trans "Contact" %}</h3>
+      <p>{% trans "Email: info@cinema.fr" %}</p>
+      <p>{% trans "Téléphone: +1 514-123-4567" %}</p>
     </div>
   </div>
 </div>
