@@ -200,20 +200,14 @@ msgid "Téléphone: +1 514-123-4567"
 msgstr "Phone: +1 514-123-4567"
 
 #: .\templates\film\film-details.html:31
-#, fuzzy
-#| msgid "Genre"
 msgid "Genre:"
 msgstr "Genre"
 
 #: .\templates\film\film-details.html:35
-#, fuzzy
-#| msgid "Description"
 msgid "Duration:"
 msgstr "Duration:"
 
 #: .\templates\film\film-details.html:39
-#, fuzzy
-#| msgid "Description"
 msgid "Description:"
 msgstr "Description"
 
@@ -317,8 +311,6 @@ msgid ""
 msgstr "Discover films, view screenings and manage your reservations easily."
 
 #: .\templates\index.html:16
-#, fuzzy
-#| msgid "réservations"
 msgid "Voir mes réservations"
 msgstr "View my reservations"
 
@@ -335,20 +327,14 @@ msgid "Annuler"
 msgstr "Cancel"
 
 #: .\templates\reservation\reservation_list.html:5
-#, fuzzy
-#| msgid "réservations"
 msgid "Mes réservations"
 msgstr "My reservations"
 
 #: .\templates\reservation\reservation_list.html:6
-#, fuzzy
-#| msgid "réservation"
 msgid "Nouvelle réservation"
 msgstr "New reservation"
 
 #: .\templates\reservation\reservation_list.html:12 .\templates\seances.html:15
-#, fuzzy
-#| msgid "Films"
 msgid "Film"
 msgstr "Film"
 
@@ -369,14 +355,10 @@ msgid "Vous n’avez aucune réservation."
 msgstr "You have no reservations"
 
 #: .\templates\seances.html:5
-#, fuzzy
-#| msgid "Séance"
 msgid "Séances"
 msgstr "Screenings"
 
 #: .\templates\seances.html:9
-#, fuzzy
-#| msgid "séances"
 msgid "Liste des séances"
 msgstr "Screenings list"
 
