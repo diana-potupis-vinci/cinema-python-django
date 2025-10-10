@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Modifier le profil - Cinéma{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Modifier le profil - Cinéma" %}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center mt-5">
     <div class="col-md-6">
         <div class="card shadow-lg">
-            {% include 'snippets/card_header_snippet.html' with header_title='Modifier le profil' header_icon='fas fa-user-edit' header_centered=True %}
+            {% include 'snippets/card_header_snippet.html' with header_title=_('Modifier le profil') header_icon='fas fa-user-edit' header_centered=True %}
             <div class="card-body p-4">
                 
                 <!-- Messages de succès -->
@@ -22,7 +23,7 @@
                     {% csrf_token %}
                     
                     <!-- Messages d'erreur généraux -->
-                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title='Erreurs de validation' %}
+                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title=_('Erreurs de validation') %}
                     
                     <!-- Champ nom d'utilisateur -->
                     <div class="mb-3">
@@ -83,15 +84,15 @@
                             </div>
                         {% endif %}
                     </div>
-                    
-                    {% include 'snippets/button_snippet.html' with button_text='Mettre à jour' button_icon='fas fa-save' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
+
+                    {% include 'snippets/button_snippet.html' with button_text=_('Mettre à jour') button_icon='fas fa-save' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
                 </form>
                 
                 <hr class="my-3">
                 
                 <div class="text-center">
-                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='password_change' button_text='Changer le mot de passe' button_icon='fas fa-key' button_style='outline-warning' extra_classes='mb-2' %}
-                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='index' button_text='Retour à l\'accueil' button_icon='fas fa-home' button_style='outline-secondary' %}
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='password_change' button_text=_('Changer le mot de passe') button_icon='fas fa-key' button_style='outline-warning' extra_classes='mb-2' %}
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='index' button_text=_('Retour à l\'accueil') button_icon='fas fa-home' button_style='outline-secondary' %}
                 </div>
             </div>
         </div>

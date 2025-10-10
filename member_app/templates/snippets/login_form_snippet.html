@@ -1,10 +1,11 @@
+{% load i18n %}
 <div class="mb-3">
     <label for="id_username" class="form-label">
-        <i class="fas fa-user me-1"></i>Nom d'utilisateur
+        <i class="fas fa-user me-1"></i>{% trans "Nom d'utilisateur" %}
     </label>
     <input type="text" name="username" class="form-control" 
            required id="id_username" 
-           placeholder="Entrez votre nom d'utilisateur"
+           placeholder="{% trans "Entrez votre nom d'utilisateur" %}"
            value="{{ username_value|default:'' }}">
     {% if username_errors %}
         <div class="text-danger mt-1">
@@ -17,11 +18,11 @@
 
 <div class="mb-4">
     <label for="id_password" class="form-label">
-        <i class="fas fa-lock me-1"></i>Mot de passe
+        <i class="fas fa-lock me-1"></i>{% trans "Mot de passe" %}
     </label>
     <input type="password" name="password" class="form-control" 
            required id="id_password" 
-           placeholder="Entrez votre mot de passe">
+           placeholder="{% trans "Entrez votre mot de passe" %}">
     {% if password_errors %}
         <div class="text-danger mt-1">
             {% for error in password_errors %}

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -17,36 +18,36 @@ class UserRegistrationForm(UserCreationForm):
         # Add Bootstrap classes and placeholders
         self.fields['username'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Choisissez un nom d\'utilisateur'
+            'placeholder': _('Choisissez un nom d\'utilisateur')
         })
         self.fields['first_name'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Votre prénom'
+            'placeholder': _('Votre prénom')
         })
         self.fields['last_name'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Votre nom de famille'
+            'placeholder': _('Votre nom de famille')
         })
         self.fields['email'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'votre.email@example.com'
+            'placeholder': _('votre.email@example.com')
         })
         self.fields['password1'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Mot de passe sécurisé'
+            'placeholder': _('Mot de passe sécurisé')
         })
         self.fields['password2'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Confirmez votre mot de passe'
+            'placeholder': _('Confirmez votre mot de passe')
         })
         
         # Update labels in French
-        self.fields['password1'].label = 'Mot de passe'
-        self.fields['password2'].label = 'Confirmer le mot de passe'
-        self.fields['email'].label = 'Adresse email'
-        self.fields['first_name'].label = 'Prénom'
-        self.fields['last_name'].label = 'Nom'
-        self.fields['username'].label = "Nom d'utilisateur"
+        self.fields['password1'].label = _('Mot de passe')
+        self.fields['password2'].label = _('Confirmer le mot de passe')
+        self.fields['email'].label = _('Adresse email')
+        self.fields['first_name'].label = _('Prénom')
+        self.fields['last_name'].label = _('Nom')
+        self.fields['username'].label = _('Nom d\'utilisateur')
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -72,26 +73,26 @@ class UserChangeForm(forms.ModelForm):
         # Add Bootstrap classes and placeholders
         self.fields['username'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Choisissez un nom d\'utilisateur'
+            'placeholder': _('Choisissez un nom d\'utilisateur')
         })
         self.fields['first_name'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Votre prénom'
+            'placeholder': _('Votre prénom')
         })
         self.fields['last_name'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Votre nom de famille'
+            'placeholder': _('Votre nom de famille')
         })
         self.fields['email'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'votre.email@example.com'
+            'placeholder': _('votre.email@example.com')
         })
 
         # Update labels in French
-        self.fields['email'].label = 'Adresse email'
-        self.fields['first_name'].label = 'Prénom'
-        self.fields['last_name'].label = 'Nom'
-        self.fields['username'].label = "Nom d'utilisateur"
+        self.fields['email'].label = _('Adresse email')
+        self.fields['first_name'].label = _('Prénom')
+        self.fields['last_name'].label = _('Nom')
+        self.fields['username'].label = _('Nom d\'utilisateur')
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -106,25 +107,25 @@ class PasswordChangeForm(forms.Form):
     old_password = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Ancien mot de passe'
+            'placeholder': _('Ancien mot de passe')
         }),
-        label='Ancien mot de passe'
+        label=_('Ancien mot de passe')
     )
     new_password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Nouveau mot de passe'
+            'placeholder': _('Nouveau mot de passe')
         }),
-        label='Nouveau mot de passe',
+        label=_('Nouveau mot de passe'),
         min_length=8,
-        help_text='Le mot de passe doit contenir au moins 8 caractères.'
+        help_text=_('Le mot de passe doit contenir au moins 8 caractères.')
     )
     new_password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Confirmez le nouveau mot de passe'
+            'placeholder': _('Confirmez le nouveau mot de passe')
         }),
-        label='Confirmez le nouveau mot de passe'
+        label=_('Confirmez le nouveau mot de passe')
     )
 
     def clean(self):

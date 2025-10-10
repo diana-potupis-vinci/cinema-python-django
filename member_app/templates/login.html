@@ -1,28 +1,29 @@
 {% extends 'base.html' %}
-{% block title %}Connexion - Cinéma{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Connexion - Cinéma" %}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center mt-5">
     <div class="col-md-5">
         <div class="card shadow-lg">
-            {% include 'snippets/card_header_snippet.html' with header_title='Connexion' header_icon='fas fa-sign-in-alt' header_centered=True %}
+            {% include 'snippets/card_header_snippet.html' with header_title=_('Connexion') header_icon='fas fa-sign-in-alt' header_centered=True %}
             <div class="card-body p-4">
                 <form method="post">
                     {% csrf_token %}
                     
                     <!-- Messages d'erreur généraux -->
-                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title='Erreurs de validation' %}
+                    {% include 'snippets/alert_snippet.html' with errors=form.non_field_errors alert_title=_('Erreurs de validation') %}
                     
                     {% include 'snippets/login_form_snippet.html' with username_value=form.username.value|default_if_none:'' username_errors=form.username.errors password_errors=form.password.errors %}
-                    
-                    {% include 'snippets/button_snippet.html' with button_text='Se connecter' button_icon='fas fa-sign-in-alt' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
+
+                    {% include 'snippets/button_snippet.html' with button_text=_('Se connecter') button_icon='fas fa-sign-in-alt' button_style='primary' extra_classes='w-100 mb-3' custom_style='background-color: darkviolet; border-color: darkviolet;' %}
                 </form>
                 
                 <hr class="my-3">
                 
                 <div class="text-center">
-                    <p class="mb-2 text-muted">Pas encore de compte?</p>
-                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='register' button_text='Créer un compte' button_icon='fas fa-user-plus' button_style='outline-secondary' %}
+                    <p class="mb-2 text-muted">{% trans "Pas encore de compte?" %}</p>
+                    {% include 'snippets/button_snippet.html' with button_type='link' button_url='register' button_text=_('Créer un compte') button_icon='fas fa-user-plus' button_style='outline-secondary' %}
                 </div>
             </div>
         </div>

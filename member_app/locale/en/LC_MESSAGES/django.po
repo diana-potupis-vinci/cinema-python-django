@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-10 08:35-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\forms.py:21 .\forms.py:76
+msgid "Choisissez un nom d'utilisateur"
+msgstr "Choose a username"
+
+#: .\forms.py:25 .\forms.py:80
+msgid "Votre prénom"
+msgstr "Your first name"
+
+#: .\forms.py:29 .\forms.py:84
+msgid "Votre nom de famille"
+msgstr "Your last name"
+
+#: .\forms.py:33 .\forms.py:88
+msgid "votre.email@example.com"
+msgstr "your.email@example.com"
+
+#: .\forms.py:37
+msgid "Mot de passe sécurisé"
+msgstr "Secure password"
+
+#: .\forms.py:41
+msgid "Confirmez votre mot de passe"
+msgstr "Confirm your password"
+
+#: .\forms.py:45 .\templates\snippets\login_form_snippet.html:21
+msgid "Mot de passe"
+msgstr "Password"
+
+#: .\forms.py:46
+msgid "Confirmer le mot de passe"
+msgstr "Confirm password"
+
+#: .\forms.py:47 .\forms.py:92
+msgid "Adresse email"
+msgstr "Email address"
+
+#: .\forms.py:48 .\forms.py:93
+msgid "Prénom"
+msgstr "First name"
+
+#: .\forms.py:49 .\forms.py:94
+msgid "Nom"
+msgstr "Last name"
+
+#: .\forms.py:50 .\forms.py:95 .\templates\snippets\login_form_snippet.html:4
+msgid "Nom d'utilisateur"
+msgstr "Username"
+
+#: .\forms.py:110 .\forms.py:112
+msgid "Ancien mot de passe"
+msgstr "Old password"
+
+#: .\forms.py:117 .\forms.py:119
+msgid "Nouveau mot de passe"
+msgstr "New password"
+
+#: .\forms.py:121
+msgid "Le mot de passe doit contenir au moins 8 caractères."
+msgstr "Password must contain at least 8 characters."
+
+#: .\forms.py:126 .\forms.py:128
+msgid "Confirmez le nouveau mot de passe"
+msgstr "Confirm new password"
+
+#: .\templates\login.html:3
+msgid "Connexion - Cinéma"
+msgstr "Login - Cinema"
+
+#: .\templates\login.html:9
+msgid "Connexion"
+msgstr "Login"
+
+#: .\templates\login.html:15 .\templates\password_change.html:26
+#: .\templates\profile_edit.html:26 .\templates\register.html:16
+msgid "Erreurs de validation"
+msgstr "Validation errors"
+
+#: .\templates\login.html:19 .\templates\register.html:47
+msgid "Se connecter"
+msgstr "Sign in"
+
+#: .\templates\login.html:25
+msgid "Pas encore de compte?"
+msgstr "Don't have an account yet?"
+
+#: .\templates\login.html:26 .\templates\register.html:9
+msgid "Créer un compte"
+msgstr "Create account"
+
+#: .\templates\password_change.html:3
+msgid "Changer le mot de passe - Cinéma"
+msgstr "Change Password - Cinema"
+
+#: .\templates\password_change.html:9 .\templates\password_change.html:73
+#: .\templates\profile_edit.html:94
+msgid "Changer le mot de passe"
+msgstr "Change password"
+
+#: .\templates\password_change.html:79
+msgid "Retour au profil"
+msgstr "Back to profile"
+
+#: .\templates\password_change.html:80 .\templates\profile_edit.html:95
+msgid "Retour à l'accueil"
+msgstr "Back to home"
+
+#: .\templates\profile_edit.html:3
+msgid "Modifier le profil - Cinéma"
+msgstr "Edit Profile - Cinema"
+
+#: .\templates\profile_edit.html:9
+msgid "Modifier le profil"
+msgstr "Edit profile"
+
+#: .\templates\profile_edit.html:88
+msgid "Mettre à jour"
+msgstr "Update"
+
+#: .\templates\register.html:3
+msgid "Inscription - Cinéma"
+msgstr "Registration - Cinema"
+
+#: .\templates\register.html:40
+msgid "Créer mon compte"
+msgstr "Create my account"
+
+#: .\templates\register.html:46
+msgid "Vous avez déjà un compte?"
+msgstr "Already have an account?"
+
+#: .\templates\snippets\login_form_snippet.html:8
+msgid "Entrez votre nom d'utilisateur"
+msgstr "Enter your username"
+
+#: .\templates\snippets\login_form_snippet.html:25
+msgid "Entrez votre mot de passe"
+msgstr "Enter your password"
+
+#: .\views.py:27
+msgid "Votre compte a été créé avec succès!"
+msgstr "Your account has been created successfully!"
+
+#: .\views.py:40
+msgid "Votre profil a été mis à jour avec succès!"
+msgstr "Your profile has been updated successfully!"
+
+#: .\views.py:54
+msgid "L'ancien mot de passe est incorrect."
+msgstr "The old password is incorrect."
+
+#: .\views.py:64
+msgid "Votre mot de passe a été changé avec succès!"
+msgstr "Your password has been changed successfully!"
