@@ -48,13 +48,36 @@ class FilmView(View):
 
         seances = Seance.objects.filter(film=film, date__gte=today).order_by('date', 'time')
 
+        user = request.user
+        can_delete_films = (
+            user.is_superuser or
+            user.groups.filter(name='cinema_admin').exists()
+        )
+
         context = {
             'film': film,
             'seances': seances,
+            'can_delete_films': can_delete_films,
         }
 
         return render(request, 'film/film-details.html', context)
-    
+
+@method_decorator(login_required, name='dispatch')
+class FilmDeleteView(View):
+    def post(self, request, id):
+        # Vérifions si l'utilisateur a le droit de supprimer
+        user_groups = request.user.groups.values_list('name', flat=True)
+        
+        if 'cinema_admin' in user_groups:
+            film = get_object_or_404(Film, id=id)
+        else:
+            messages.error(request, _('Vous n\'avez pas la permission de supprimer cette film'))
+            return redirect('film-list')
+            
+        film.delete()
+        messages.success(request, _('Film a été supprimée avec succès!'))
+        return redirect('film-list')
+
 class SeanceView(View):
     def get(self, request):
         seances = Seance.objects.all()

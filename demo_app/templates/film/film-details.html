@@ -9,17 +9,11 @@
     <div class="row align-items-stretch">
       <div class="col-md-4 p-0">
         {% if film.poster %}
-        <img
-          src="{{ film.poster.url }}"
-          class="img-fluid w-100 h-100 object-fit-cover rounded-start"
-          alt="{{ film.title }}"
-        />
+        <img src="{{ film.poster.url }}" class="img-fluid w-100 h-100 object-fit-cover rounded-start"
+          alt="{{ film.title }}" />
         {% else %}
-        <img
-          src="{% static 'img/default.png' %}"
-          class="img-fluid w-100 h-100 object-fit-cover rounded-start"
-          alt="No image"
-        />
+        <img src="{% static 'img/default.png' %}" class="img-fluid w-100 h-100 object-fit-cover rounded-start"
+          alt="No image" />
         {% endif %}
       </div>
 
@@ -43,17 +37,17 @@
           <h5 class="mb-3">{% trans "Séances disponibles:" %}</h5>
 
           {% if seances %}
-            <ul class="list-unstyled">
-              {% for seance in seances %}
-                <li class="mb-2">
-                  <strong>{{ seance.date|date:"d/m/Y" }}</strong>
-                  à <strong>{{ seance.time|time:"H:i" }}</strong>
-                  ({{ seance.hall.name }})
-                </li>
-              {% endfor %}
-            </ul>
+          <ul class="list-unstyled">
+            {% for seance in seances %}
+            <li class="mb-2">
+              <strong>{{ seance.date|date:"d/m/Y" }}</strong>
+              à <strong>{{ seance.time|time:"H:i" }}</strong>
+              ({{ seance.hall.name }})
+            </li>
+            {% endfor %}
+          </ul>
           {% else %}
-            <p class="text-muted">{% trans "Aucune séance prévue." %}</p>
+          <p class="text-muted">{% trans "Aucune séance prévue." %}</p>
           {% endif %}
           <h5 class="mb-3">{% trans "Acteurs:" %}</h5>
           <div class="row g-3">
@@ -74,11 +68,20 @@
             <p>{% trans "Aucun acteur répertorié." %}</p>
             {% endfor %}
           </div>
-
+          <div class="mt-3">
+            {% if can_delete_films %}
+            <form action="{% url 'film_delete' film.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-danger" style="background-color: rgb(226, 98, 226);"
+                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette film ?')">{% trans "Supprimer"
+                %}</button>
+            </form>
+            {% endif %}
+          </div>
           <div class="mt-4">
-            <a href="{% url 'film-list' %}" class="btn btn-primary" style="background-color: darkviolet; border-color: darkviolet;"
-              >{% trans "Retour à la liste des films" %}</a
-            >
+            <a href="{% url 'film-list' %}" class="btn btn-primary"
+              style="background-color: darkviolet; border-color: darkviolet;">{% trans "Retour à la liste des films"
+              %}</a>
           </div>
         </div>
       </div>
