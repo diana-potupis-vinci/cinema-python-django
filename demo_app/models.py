@@ -60,7 +60,7 @@ class Seance(models.Model):
    hall = models.ForeignKey(Hall, verbose_name=_("Salle"), related_name='seances', on_delete=models.CASCADE)
 
    def __str__(self):
-    return f"{self.film.title} - {self.date} à {self.time}"
+    return f"{self.film.title} - {self.date} - {self.time}"
    
    class Meta:
     ordering = ('date', 'time')
