@@ -387,3 +387,7 @@ msgstr "Your reservation has been created successfully!"
 #: .\demo_app\views.py:135
 msgid "Votre réservation a été supprimée avec succès!"
 msgstr "Your reservation has been deleted successfully!"
+
+#: .\demo_app\views.py:147
+msgid "Vous n'avez pas la permission de supprimer cette réservation."
+msgstr "You do not have permission to delete this reservation."

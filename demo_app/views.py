@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .models import Film, Seance, Reservation
 from .forms import ReservationForm, FilmForm
@@ -68,8 +69,9 @@ class SeanceView(View):
 def AboutView(request):
         return render(request, 'about.html')
 
-@method_decorator(login_required, name='dispatch')
-class FilmCreateView(View):
+class FilmCreateView(PermissionRequiredMixin, View):
+    permission_required = 'demo_app.add_film'
+    
     def get(self, request):
         form = FilmForm()
         return render(request, 'film/film_form.html', {'form': form})
@@ -85,14 +87,27 @@ class FilmCreateView(View):
 @method_decorator(login_required, name='dispatch')
 class ReservationListView(View):
     def get(self, request):
-        reservations = Reservation.objects.filter(user=request.user)
+        # cinema_admin et les employés peuvent voir toutes les réservations, les autres seulement les leurs
+        if request.user.groups.filter(name='cinema_admin').exists() or request.user.groups.filter(name='employee').exists():
+            reservations = Reservation.objects.all()
+        else:
+            reservations = Reservation.objects.filter(user=request.user)
+
+        # Vérifions si l'utilisateur peut supprimer des réservations
+        user_groups = request.user.groups.values_list('name', flat=True)
+        can_delete_reservations = 'cinema_admin' in user_groups or 'employee' in user_groups
 
         paginator = Paginator(reservations, 10)
 
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
-        return render(request, 'reservation/reservation_list.html', {'page_obj': page_obj})
+        context = {
+            'page_obj': page_obj,
+            'can_delete_reservations': can_delete_reservations
+        }
+
+        return render(request, 'reservation/reservation_list.html', context)
 
 @method_decorator(login_required, name='dispatch')
 class ReservationCreateView(View):
@@ -114,12 +129,22 @@ class ReservationCreateView(View):
 @method_decorator(login_required, name='dispatch')
 class ReservationUpdateView(View):
     def get(self, request, id):
-        reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        # cinema_admin peut modifier n'importe quelle réservation, les autres seulement les leurs
+        if request.user.groups.filter(name='cinema_admin').exists():
+            reservation = get_object_or_404(Reservation, id=id)
+        else:
+            reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        
         form = ReservationForm(instance=reservation)
         return render(request, 'reservation/reservation_form.html', {'form': form})
 
     def post(self, request, id):
-        reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        # cinema_admin peut modifier n'importe quelle réservation, les autres seulement les leurs
+        if request.user.groups.filter(name='cinema_admin').exists():
+            reservation = get_object_or_404(Reservation, id=id)
+        else:
+            reservation = get_object_or_404(Reservation, id=id, user=request.user)
+            
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
@@ -130,7 +155,20 @@ class ReservationUpdateView(View):
 @method_decorator(login_required, name='dispatch')
 class ReservationDeleteView(View):
     def post(self, request, id):
-        reservation = get_object_or_404(Reservation, id=id, user=request.user)
+        # Vérifions si l'utilisateur a le droit de supprimer
+        user_groups = request.user.groups.values_list('name', flat=True)
+        
+        if 'cinema_admin' in user_groups:
+            # cinema_admin peut supprimer n'importe quelle réservation
+            reservation = get_object_or_404(Reservation, id=id)
+        elif 'employee' in user_groups:
+            # employee peut supprimer n'importe quelle réservation
+            reservation = get_object_or_404(Reservation, id=id)
+        else:
+            # Les clients ordinaires NE peuvent pas supprimer de réservations
+            messages.error(request, _('Vous n\'avez pas la permission de supprimer cette réservation.'))
+            return redirect('reservation_list')
+            
         reservation.delete()
         messages.success(request, _('Votre réservation a été supprimée avec succès!'))
         return redirect('reservation_list')

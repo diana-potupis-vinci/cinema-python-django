@@ -68,7 +68,7 @@
             <a class="nav-link" href="{% url 'reservation_list' %}">{% trans "Réservations" %}</a>
           </li>
           {% endif %}
-          {% if user.is_authenticated and user.is_superuser %}
+          {% if user.is_authenticated and perms.demo_app.add_film %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'film_add' %}">{% trans "Ajouter un film" %}</a>
           </li>
