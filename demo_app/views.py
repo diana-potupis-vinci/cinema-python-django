@@ -68,10 +68,10 @@ class FilmDeleteView(View):
         # Vérifions si l'utilisateur a le droit de supprimer
         user_groups = request.user.groups.values_list('name', flat=True)
         
-        if 'cinema_admin' in user_groups:
+        if request.user.is_superuser or 'cinema_admin' in user_groups:
             film = get_object_or_404(Film, id=id)
         else:
-            messages.error(request, _('Vous n\'avez pas la permission de supprimer cette film'))
+            messages.error(request, _('Vous n\'avez pas la permission de supprimer ce film'))
             return redirect('film-list')
             
         film.delete()
@@ -110,15 +110,15 @@ class FilmCreateView(PermissionRequiredMixin, View):
 @method_decorator(login_required, name='dispatch')
 class ReservationListView(View):
     def get(self, request):
-        # cinema_admin et les employés peuvent voir toutes les réservations, les autres seulement les leurs
-        if request.user.groups.filter(name='cinema_admin').exists() or request.user.groups.filter(name='employee').exists():
+        # cinema_admin, superuser et les employés peuvent voir toutes les réservations, les autres seulement les leurs
+        if request.user.is_superuser or request.user.groups.filter(name='cinema_admin').exists() or request.user.groups.filter(name='employee').exists():
             reservations = Reservation.objects.all()
         else:
             reservations = Reservation.objects.filter(user=request.user)
 
         # Vérifions si l'utilisateur peut supprimer des réservations
         user_groups = request.user.groups.values_list('name', flat=True)
-        can_delete_reservations = 'cinema_admin' in user_groups or 'employee' in user_groups
+        can_delete_reservations = request.user.is_superuser or 'cinema_admin' in user_groups or 'employee' in user_groups
 
         paginator = Paginator(reservations, 10)
 
@@ -181,7 +181,7 @@ class ReservationDeleteView(View):
         # Vérifions si l'utilisateur a le droit de supprimer
         user_groups = request.user.groups.values_list('name', flat=True)
         
-        if 'cinema_admin' in user_groups:
+        if request.user.is_superuser or 'cinema_admin' in user_groups:
             # cinema_admin peut supprimer n'importe quelle réservation
             reservation = get_object_or_404(Reservation, id=id)
         elif 'employee' in user_groups:

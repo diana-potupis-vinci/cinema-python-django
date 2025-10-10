@@ -73,15 +73,13 @@
             <form action="{% url 'film_delete' film.id %}" method="post" class="d-inline">
               {% csrf_token %}
               <button type="submit" class="btn btn-sm btn-danger" style="background-color: rgb(226, 98, 226);"
-                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette film ?')">{% trans "Supprimer"
-                %}</button>
+                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette film ?')">{% trans "Supprimer"%}</button>
             </form>
             {% endif %}
           </div>
           <div class="mt-4">
             <a href="{% url 'film-list' %}" class="btn btn-primary"
-              style="background-color: darkviolet; border-color: darkviolet;">{% trans "Retour à la liste des films"
-              %}</a>
+              style="background-color: darkviolet; border-color: darkviolet;">{% trans "Retour à la liste des films"%}</a>
           </div>
         </div>
       </div>

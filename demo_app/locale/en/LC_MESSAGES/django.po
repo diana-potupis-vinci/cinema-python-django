@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 08:48-0400\n"
+"POT-Creation-Date: 2025-10-10 15:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,35 +205,40 @@ msgstr "Email: info@cinema.fr"
 msgid "Téléphone: +1 514-123-4567"
 msgstr "Phone: +1 514-123-4567"
 
-#: .\demo_app\templates\film\film-details.html:31
+#: .\demo_app\templates\film\film-details.html:25
 msgid "Genre:"
 msgstr "Genre"
 
-#: .\demo_app\templates\film\film-details.html:35
+#: .\demo_app\templates\film\film-details.html:29
 msgid "Duration:"
 msgstr "Duration:"
 
-#: .\demo_app\templates\film\film-details.html:39
+#: .\demo_app\templates\film\film-details.html:33
 msgid "Description:"
 msgstr "Description"
 
-#: .\demo_app\templates\film\film-details.html:43
+#: .\demo_app\templates\film\film-details.html:37
 msgid "Séances disponibles:"
 msgstr "Available screenings:"
 
-#: .\demo_app\templates\film\film-details.html:56
+#: .\demo_app\templates\film\film-details.html:50
 msgid "Aucune séance prévue."
 msgstr "No screening scheduled."
 
-#: .\demo_app\templates\film\film-details.html:58
+#: .\demo_app\templates\film\film-details.html:52
 msgid "Acteurs:"
 msgstr "Actors"
 
-#: .\demo_app\templates\film\film-details.html:74
+#: .\demo_app\templates\film\film-details.html:68
 msgid "Aucun acteur répertorié."
 msgstr "No actor listed."
 
-#: .\demo_app\templates\film\film-details.html:80
+#: .\demo_app\templates\film\film-details.html:76
+#: .\demo_app\templates\reservation\reservation_list.html:33
+msgid "Supprimer"
+msgstr "Delete"
+
+#: .\demo_app\templates\film\film-details.html:82
 msgid "Retour à la liste des films"
 msgstr "Back to film list"
 
@@ -356,11 +361,7 @@ msgstr "Actions"
 msgid "Modifier"
 msgstr "Edit"
 
-#: .\demo_app\templates\reservation\reservation_list.html:32
-msgid "Supprimer"
-msgstr "Delete"
-
-#: .\demo_app\templates\reservation\reservation_list.html:40
+#: .\demo_app\templates\reservation\reservation_list.html:42
 msgid "Vous n’avez aucune réservation."
 msgstr "You have no reservations"
 
@@ -376,18 +377,26 @@ msgstr "Screenings list"
 msgid "Aucune séance trouvée."
 msgstr "No screening found."
 
-#: .\demo_app\views.py:81
+#: .\demo_app\views.py:74
+msgid "Vous n'avez pas la permission de supprimer ce film"
+msgstr "You do not have permission to delete this film."
+
+#: .\demo_app\views.py:78
+msgid "Film a été supprimée avec succès!"
+msgstr "The film has been added successfully!"
+
+#: .\demo_app\views.py:106
 msgid "Le film a été ajouté avec succès!"
 msgstr "The film has been added successfully!"
 
-#: .\demo_app\views.py:109
+#: .\demo_app\views.py:147
 msgid "Votre réservation a été créée avec succès!"
 msgstr "Your reservation has been created successfully!"
 
-#: .\demo_app\views.py:135
-msgid "Votre réservation a été supprimée avec succès!"
-msgstr "Your reservation has been deleted successfully!"
-
-#: .\demo_app\views.py:147
+#: .\demo_app\views.py:192
 msgid "Vous n'avez pas la permission de supprimer cette réservation."
 msgstr "You do not have permission to delete this reservation."
+
+#: .\demo_app\views.py:196
+msgid "Votre réservation a été supprimée avec succès!"
+msgstr "Your reservation has been deleted successfully!"
