@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-03 10:25-0400\n"
+"POT-Creation-Date: 2025-10-10 08:48-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,362 +18,372 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:9 .\forms.py:17
+#: .\demo_app\forms.py:9 .\demo_app\forms.py:17
 msgid "Nombre de places"
 msgstr "Number of places"
 
-#: .\forms.py:16 .\models.py:72
+#: .\demo_app\forms.py:16 .\demo_app\models.py:72
 msgid "Séance"
 msgstr "Seance"
 
-#: .\forms.py:28 .\models.py:28
+#: .\demo_app\forms.py:28 .\demo_app\models.py:28
 msgid "Titre"
 msgstr "Title"
 
-#: .\forms.py:29 .\models.py:29
+#: .\demo_app\forms.py:29 .\demo_app\models.py:29
 msgid "Description"
 msgstr "Description"
 
-#: .\forms.py:30 .\models.py:30
+#: .\demo_app\forms.py:30 .\demo_app\models.py:30
 msgid "Durée"
 msgstr "Duration"
 
-#: .\forms.py:31 .\models.py:17 .\models.py:31
+#: .\demo_app\forms.py:31 .\demo_app\models.py:17 .\demo_app\models.py:31
 msgid "Genre"
 msgstr "Genre"
 
-#: .\forms.py:32 .\models.py:32
+#: .\demo_app\forms.py:32 .\demo_app\models.py:32
 msgid "Affiche"
 msgstr "Poster"
 
-#: .\forms.py:33 .\models.py:33
+#: .\demo_app\forms.py:33 .\demo_app\models.py:33
 msgid "Acteurs"
 msgstr "Actors"
 
-#: .\models.py:6 .\models.py:60
-#: .\templates\reservation\reservation_list.html:15 .\templates\seances.html:18
+#: .\demo_app\models.py:6 .\demo_app\models.py:60
+#: .\demo_app\templates\reservation\reservation_list.html:15
+#: .\demo_app\templates\seances.html:18
 msgid "Salle"
 msgstr "Hall"
 
-#: .\models.py:13
+#: .\demo_app\models.py:13
 msgid "salle"
 msgstr "hall"
 
-#: .\models.py:14
+#: .\demo_app\models.py:14
 msgid "salles"
 msgstr "halls"
 
-#: .\models.py:24
+#: .\demo_app\models.py:24
 msgid "genre"
 msgstr "genre"
 
-#: .\models.py:25
+#: .\demo_app\models.py:25
 msgid "genres"
 msgstr "genres"
 
-#: .\models.py:40
+#: .\demo_app\models.py:40
 msgid "film"
 msgstr "film"
 
-#: .\models.py:41
+#: .\demo_app\models.py:41
 msgid "films"
 msgstr "films"
 
-#: .\models.py:44
+#: .\demo_app\models.py:44
 msgid "Prénom"
 msgstr "First name"
 
-#: .\models.py:45
+#: .\demo_app\models.py:45
 msgid "Nom"
 msgstr "Last name"
 
-#: .\models.py:46
+#: .\demo_app\models.py:46
 msgid "Biographie"
 msgstr "Biography"
 
-#: .\models.py:53
+#: .\demo_app\models.py:53
 msgid "acteur"
 msgstr "actor"
 
-#: .\models.py:54
+#: .\demo_app\models.py:54
 msgid "acteurs"
 msgstr "actors"
 
-#: .\models.py:57
+#: .\demo_app\models.py:57
 msgid "Films"
 msgstr "Films"
 
-#: .\models.py:58 .\templates\reservation\reservation_list.html:13
-#: .\templates\seances.html:16
+#: .\demo_app\models.py:58
+#: .\demo_app\templates\reservation\reservation_list.html:13
+#: .\demo_app\templates\seances.html:16
 msgid "Date"
 msgstr "Date"
 
-#: .\models.py:59 .\templates\reservation\reservation_list.html:14
-#: .\templates\seances.html:17
+#: .\demo_app\models.py:59
+#: .\demo_app\templates\reservation\reservation_list.html:14
+#: .\demo_app\templates\seances.html:17
 msgid "Heure"
 msgstr "Time"
 
-#: .\models.py:67
+#: .\demo_app\models.py:67
 msgid "séance"
 msgstr "seance"
 
-#: .\models.py:68
+#: .\demo_app\models.py:68
 msgid "séances"
 msgstr "seances"
 
-#: .\models.py:71
+#: .\demo_app\models.py:71
 msgid "Utilisateur"
 msgstr "User"
 
-#: .\models.py:73 .\templates\reservation\reservation_list.html:16
+#: .\demo_app\models.py:73
+#: .\demo_app\templates\reservation\reservation_list.html:16
 msgid "Places"
 msgstr "Places"
 
-#: .\models.py:74
+#: .\demo_app\models.py:74
 msgid "Date réservation"
 msgstr "Reservation date"
 
-#: .\models.py:81
+#: .\demo_app\models.py:81
 msgid "réservation"
 msgstr "Reservation date"
 
-#: .\models.py:82
+#: .\demo_app\models.py:82
 msgid "réservations"
 msgstr "reservations"
 
-#: .\templates\about.html:9
+#: .\demo_app\templates\about.html:9
 msgid "À propos de notre Cinéma"
 msgstr "About our Cinema"
 
-#: .\templates\about.html:12
+#: .\demo_app\templates\about.html:12
 msgid "Bienvenue sur notre site de réservation de films ! 🎬"
 msgstr "Welcome to our movie reservation site! 🎬"
 
-#: .\templates\about.html:15
+#: .\demo_app\templates\about.html:15
 msgid "Notre mission"
 msgstr "Our mission"
 
-#: .\templates\about.html:17
+#: .\demo_app\templates\about.html:17
 msgid ""
 "Offrir une expérience cinématographique agréable et simple, avec la "
 "possibilité de réserver vos places en ligne."
-msgstr "Provide a pleasant and simple cinematic experience, with the ability to reserve your seats online."
+msgstr ""
+"Provide a pleasant and simple cinematic experience, with the ability to "
+"reserve your seats online."
 
-#: .\templates\about.html:20
+#: .\demo_app\templates\about.html:20
 msgid "Tarifs des billets"
 msgstr "Ticket prices"
 
-#: .\templates\about.html:25
+#: .\demo_app\templates\about.html:25
 msgid "Adulte"
 msgstr "Adult"
 
-#: .\templates\about.html:27
+#: .\demo_app\templates\about.html:27
 msgid "Accès à toutes les séances à partir de 18 ans."
 msgstr "Access to all screenings from 18 years old."
 
-#: .\templates\about.html:34
+#: .\demo_app\templates\about.html:34
 msgid "Enfant"
 msgstr "Child"
 
-#: .\templates\about.html:36
+#: .\demo_app\templates\about.html:36
 msgid "Pour les moins de 12 ans."
 msgstr "For children under 12 years old."
 
-#: .\templates\about.html:43
+#: .\demo_app\templates\about.html:43
 msgid "Étudiant"
 msgstr "Student"
 
-#: .\templates\about.html:45
+#: .\demo_app\templates\about.html:45
 msgid "Tarif spécial sur présentation d’une carte étudiante."
 msgstr "Special rate upon presentation of a student card."
 
-#: .\templates\about.html:51
+#: .\demo_app\templates\about.html:51
 msgid "Contact"
 msgstr "Contact"
 
-#: .\templates\about.html:52
+#: .\demo_app\templates\about.html:52
 msgid "Email: info@cinema.fr"
 msgstr "Email: info@cinema.fr"
 
-#: .\templates\about.html:53
+#: .\demo_app\templates\about.html:53
 msgid "Téléphone: +1 514-123-4567"
 msgstr "Phone: +1 514-123-4567"
 
-#: .\templates\film\film-details.html:31
+#: .\demo_app\templates\film\film-details.html:31
 msgid "Genre:"
 msgstr "Genre"
 
-#: .\templates\film\film-details.html:35
+#: .\demo_app\templates\film\film-details.html:35
 msgid "Duration:"
 msgstr "Duration:"
 
-#: .\templates\film\film-details.html:39
+#: .\demo_app\templates\film\film-details.html:39
 msgid "Description:"
 msgstr "Description"
 
-#: .\templates\film\film-details.html:43
+#: .\demo_app\templates\film\film-details.html:43
 msgid "Séances disponibles:"
 msgstr "Available screenings:"
 
-#: .\templates\film\film-details.html:56
+#: .\demo_app\templates\film\film-details.html:56
 msgid "Aucune séance prévue."
 msgstr "No screening scheduled."
 
-#: .\templates\film\film-details.html:58
+#: .\demo_app\templates\film\film-details.html:58
 msgid "Acteurs:"
 msgstr "Actors"
 
-#: .\templates\film\film-details.html:74
+#: .\demo_app\templates\film\film-details.html:74
 msgid "Aucun acteur répertorié."
 msgstr "No actor listed."
 
-#: .\templates\film\film-details.html:80
+#: .\demo_app\templates\film\film-details.html:80
 msgid "Retour à la liste des films"
 msgstr "Back to film list"
 
-#: .\templates\film\film-list.html:3 .\templates\film\film-list.html:8
+#: .\demo_app\templates\film\film-list.html:3
+#: .\demo_app\templates\film\film-list.html:8
 msgid "Liste des films"
 msgstr "Film list"
 
-#: .\templates\film\film-list.html:22 .\templates\index.html:45
+#: .\demo_app\templates\film\film-list.html:22
+#: .\demo_app\templates\index.html:45
 msgid "Voir le détail"
 msgstr "View details"
 
-#: .\templates\film\film-list.html:27 .\templates\index.html:51
+#: .\demo_app\templates\film\film-list.html:27
+#: .\demo_app\templates\index.html:51
 msgid "Aucun film trouvé."
 msgstr "No film found."
 
-#: .\templates\film\film_form.html:3
+#: .\demo_app\templates\film\film_form.html:3
 msgid "Ajouter un Film - Cinéma"
 msgstr "Add Film - Cinema"
 
-#: .\templates\film\film_form.html:11
+#: .\demo_app\templates\film\film_form.html:11
 msgid "Ajouter un nouveau film"
 msgstr "Add a new film"
 
-#: .\templates\film\film_form.html:18
+#: .\demo_app\templates\film\film_form.html:18
 msgid "Erreurs dans le formulaire"
 msgstr "Errors in the form"
 
-#: .\templates\film\film_form.html:66
+#: .\demo_app\templates\film\film_form.html:66
 msgid "Maintenez Ctrl/Cmd pour sélectionner plusieurs acteurs"
 msgstr "Hold Ctrl/Cmd to select multiple actors"
 
-#: .\templates\film\film_form.html:82
+#: .\demo_app\templates\film\film_form.html:82
 msgid "Retour"
 msgstr "Back"
 
-#: .\templates\film\film_form.html:85
-#: .\templates\reservation\reservation_form.html:15
+#: .\demo_app\templates\film\film_form.html:85
+#: .\demo_app\templates\reservation\reservation_form.html:15
 msgid "Enregistrer"
 msgstr "Save"
 
-#: .\templates\includes\pagination_section.html:6
-#: .\templates\includes\pagination_section.html:12
+#: .\demo_app\templates\includes\pagination_section.html:6
+#: .\demo_app\templates\includes\pagination_section.html:12
 msgid "Premier"
 msgstr "First"
 
-#: .\templates\includes\pagination_section.html:9
-#: .\templates\includes\pagination_section.html:13
+#: .\demo_app\templates\includes\pagination_section.html:9
+#: .\demo_app\templates\includes\pagination_section.html:13
 msgid "Précédent"
 msgstr "Previous"
 
-#: .\templates\includes\pagination_section.html:17
+#: .\demo_app\templates\includes\pagination_section.html:17
 msgid "Page"
 msgstr "Page"
 
-#: .\templates\includes\pagination_section.html:17
+#: .\demo_app\templates\includes\pagination_section.html:17
 msgid "sur"
 msgstr "of"
 
-#: .\templates\includes\pagination_section.html:22
-#: .\templates\includes\pagination_section.html:28
+#: .\demo_app\templates\includes\pagination_section.html:22
+#: .\demo_app\templates\includes\pagination_section.html:28
 msgid "Suivant"
 msgstr "Next"
 
-#: .\templates\includes\pagination_section.html:25
-#: .\templates\includes\pagination_section.html:29
+#: .\demo_app\templates\includes\pagination_section.html:25
+#: .\demo_app\templates\includes\pagination_section.html:29
 msgid "Dernier"
 msgstr "Last"
 
-#: .\templates\index.html:3
+#: .\demo_app\templates\index.html:3
 msgid "Accueil"
 msgstr "Home"
 
-#: .\templates\index.html:10
+#: .\demo_app\templates\index.html:10
 msgid "Bienvenue sur la plateforme de gestion de films 🎬"
 msgstr "Welcome to the film management platform 🎬"
 
-#: .\templates\index.html:12
+#: .\demo_app\templates\index.html:12
 msgid ""
 "Découvrez les films, consultez les séances et gérez vos réservations "
 "facilement."
 msgstr "Discover films, view screenings and manage your reservations easily."
 
-#: .\templates\index.html:16
+#: .\demo_app\templates\index.html:16
 msgid "Voir mes réservations"
 msgstr "View my reservations"
 
-#: .\templates\index.html:18
+#: .\demo_app\templates\index.html:18
 msgid "Voir les films"
 msgstr "View films"
 
-#: .\templates\reservation\reservation_form.html:6
+#: .\demo_app\templates\reservation\reservation_form.html:6
 msgid "Réserver une séance"
 msgstr "Reserve a screening"
 
-#: .\templates\reservation\reservation_form.html:16
+#: .\demo_app\templates\reservation\reservation_form.html:16
 msgid "Annuler"
 msgstr "Cancel"
 
-#: .\templates\reservation\reservation_list.html:5
+#: .\demo_app\templates\reservation\reservation_list.html:5
 msgid "Mes réservations"
 msgstr "My reservations"
 
-#: .\templates\reservation\reservation_list.html:6
+#: .\demo_app\templates\reservation\reservation_list.html:6
 msgid "Nouvelle réservation"
 msgstr "New reservation"
 
-#: .\templates\reservation\reservation_list.html:12 .\templates\seances.html:15
+#: .\demo_app\templates\reservation\reservation_list.html:12
+#: .\demo_app\templates\seances.html:15
 msgid "Film"
 msgstr "Film"
 
-#: .\templates\reservation\reservation_list.html:17
+#: .\demo_app\templates\reservation\reservation_list.html:17
 msgid "Actions"
 msgstr "Actions"
 
-#: .\templates\reservation\reservation_list.html:29
+#: .\demo_app\templates\reservation\reservation_list.html:29
 msgid "Modifier"
 msgstr "Edit"
 
-#: .\templates\reservation\reservation_list.html:32
+#: .\demo_app\templates\reservation\reservation_list.html:32
 msgid "Supprimer"
 msgstr "Delete"
 
-#: .\templates\reservation\reservation_list.html:40
+#: .\demo_app\templates\reservation\reservation_list.html:40
 msgid "Vous n’avez aucune réservation."
 msgstr "You have no reservations"
 
-#: .\templates\seances.html:5
+#: .\demo_app\templates\seances.html:5
 msgid "Séances"
 msgstr "Screenings"
 
-#: .\templates\seances.html:9
+#: .\demo_app\templates\seances.html:9
 msgid "Liste des séances"
 msgstr "Screenings list"
 
-#: .\templates\seances.html:33
+#: .\demo_app\templates\seances.html:33
 msgid "Aucune séance trouvée."
 msgstr "No screening found."
 
-#: .\views.py:81
+#: .\demo_app\views.py:81
 msgid "Le film a été ajouté avec succès!"
 msgstr "The film has been added successfully!"
 
-#: .\views.py:109
+#: .\demo_app\views.py:109
 msgid "Votre réservation a été créée avec succès!"
 msgstr "Your reservation has been created successfully!"
 
-#: .\views.py:135
+#: .\demo_app\views.py:135
 msgid "Votre réservation a été supprimée avec succès!"
 msgstr "Your reservation has been deleted successfully!"
